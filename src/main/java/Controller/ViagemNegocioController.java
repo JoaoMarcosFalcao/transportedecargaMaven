@@ -12,9 +12,8 @@ public class ViagemNegocioController {
     private Viagem viagem;
     private Carga carga;
     private Veiculo veiculo;
-    private Rota rota;
 
-    public double calcularFretePeso(Carga carga) {
+    public double calcularFretePeso(Carga carga, Rota rota) {
 
         double freteKM = rota.getDistancia() * 1.50;
 
@@ -35,37 +34,9 @@ public class ViagemNegocioController {
     }
 
 
-    public void cadastrarViagem() {
-        Scanner leia = new Scanner(System.in);
+    public void precoFrete(Viagem viagem, Carga carga, Rota rota){
 
-        viagem.setId(id_generator.getAndIncrement());
-
-        System.out.println("Informe a hora da saida:");
-        viagem.setHoraPartida(leia.nextDouble());
-
-        System.out.println("Informe o ano de saida:");
-        int saidaAno = leia.nextInt();
-        System.out.println("Informe o mês de saida:");
-        int saidaMes = leia.nextInt();
-        System.out.println("Informe o dia de saida:");
-        int saidaDia = leia.nextInt();
-
-        viagem.setDataSaida(LocalDate.of(saidaAno, saidaMes, saidaDia));
-
-        System.out.println("Informe a hora da chegada:");
-        viagem.setHoraChegada(leia.nextDouble());
-
-        System.out.println("Informe o ano de chegada:");
-        int chegadaAno = leia.nextInt();
-        System.out.println("Informe o mês de chegada:");
-        int chegadaMes = leia.nextInt();
-        System.out.println("Informe o dia de chegada:");
-        int chegadaDia = leia.nextInt();
-
-
-        viagem.setDataChegada(LocalDate.of(saidaAno, saidaMes, saidaDia));
-
-
+        viagem.setFrete(calcularFretePeso(carga, rota));
     }
 }
 

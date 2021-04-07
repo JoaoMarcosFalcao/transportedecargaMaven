@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Rota;
 import Model.Veiculo;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class VeiculoController {
     private static AtomicInteger id_generator = new AtomicInteger(0);
     private ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
 
-    public void cadastrarMotorista() {
+    public void cadastrarVeiculo() {
         veiculo = new Veiculo();
 
         Scanner leia = new Scanner(System.in);
@@ -92,6 +93,9 @@ public class VeiculoController {
             }
             log++;
         }
+    }
+    public Veiculo getVeiculo(int i) {
+        return veiculos.get(i);
     }
 }
 

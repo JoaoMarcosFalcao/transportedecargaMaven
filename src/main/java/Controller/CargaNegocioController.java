@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Carga;
+import Model.Rota;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -106,6 +107,9 @@ public class CargaNegocioController {
             log++;
         }
 
+    }
+    public Carga getCarga(int i) {
+        return cargas.get(i);
     }
 }
 

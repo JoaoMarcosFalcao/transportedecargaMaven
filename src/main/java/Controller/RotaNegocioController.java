@@ -92,4 +92,8 @@ public class RotaNegocioController {
             log++;
         }
     }
+
+    public Rota getRotas(int i) {
+        return rotas.get(i);
+    }
 }
