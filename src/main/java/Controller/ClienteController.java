@@ -74,5 +74,14 @@ public class ClienteController {
             log++;
         }
     }
+    public void printarCliente (Cliente cliente) {
+        System.out.println();
+        System.out.println("O Nome do Cliente é:" + cliente.getNome());
+        System.out.println("O Email do Cliente é" + cliente.getEmail());
+        System.out.println("O Telefone do Cliente é:" + cliente.getTelefone());
+        System.out.println("O Enderenço do Clietne é:" + cliente.getEndereco());
+        System.out.println("O CPF do Cliente é:" + cliente.getCpf());
+        System.out.println();
+    }
 }
 

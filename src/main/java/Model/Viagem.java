@@ -99,4 +99,19 @@ public class Viagem {
         this.frete = frete;
     }
 
+    @Override
+    public String toString() {
+        return "Viagem{" +
+                "id=" + id +
+                ", horaPartida=" + horaPartida +
+                ", horaChegada=" + horaChegada +
+                ", dataSaida=" + dataSaida +
+                ", dataChegada=" + dataChegada +
+                ", carga=" + carga +
+                ", veiculo=" + veiculo +
+                ", motorista=" + motorista +
+                ", rotas=" + rotas +
+                ", frete=" + frete +
+                '}';
+    }
 }

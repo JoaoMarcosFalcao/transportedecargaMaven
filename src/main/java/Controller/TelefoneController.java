@@ -85,4 +85,11 @@ public class TelefoneController {
             log++;
         }
     }
+    public void printarTelefones (Telefone telefone) {
+        System.out.println();
+        System.out.println("O Numero do Telefone é:" + telefone.getNumero());
+        System.out.println("O Código de Area é:" + telefone.getCodigoArea());
+        System.out.println("O DDD do Telefone é:" + telefone.getDDD());
+        System.out.println();
+    }
 }

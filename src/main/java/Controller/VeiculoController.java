@@ -94,6 +94,16 @@ public class VeiculoController {
             log++;
         }
     }
+    public void printarVeiculo (Veiculo veiculo) {
+        System.out.println();
+        System.out.println("A Marca do Veiculo é:" + veiculo.getMarca());
+        System.out.println("O Modelo do Veiculo é:" + veiculo.getModelo());
+        System.out.println("O Ano do Veiculo é:" + veiculo.getAno());
+        System.out.println("A Placa do Veiculo é:" + veiculo.getPlaca());
+        System.out.println("O RENVAM do Veiculo é:" + veiculo.getRENAVAM());
+        System.out.println("A Capacidade de Carga Total do Veiculo é:" + veiculo.getCapacidade());
+        System.out.println();
+    }
     public Veiculo getVeiculo(int i) {
         return veiculos.get(i);
     }

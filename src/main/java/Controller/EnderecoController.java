@@ -86,4 +86,13 @@ public class EnderecoController {
             log++;
         }
     }
+    public void printarEndereco (Endereco endereco) {
+        System.out.println();
+        System.out.println("A Rua é:" + endereco.getRua());
+        System.out.println("O Número da Casa é:" + endereco.getNumero());
+        System.out.println("O Bairro é:" + endereco.getBairro());
+        System.out.println("A Cidade é:" + endereco.getCidade());
+        System.out.println("O Estado é:" + endereco.getEstado());
+        System.out.println();
+    }
 }

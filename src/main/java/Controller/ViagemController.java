@@ -15,8 +15,10 @@ public class ViagemController {
     private ArrayList<Viagem> viagens = new ArrayList<Viagem>();
 
 
-    public void cadastrarViagem(Carga carga, Rota rota, Veiculo veiculo) {
+    public void cadastrarViagem() {
         Scanner leia = new Scanner(System.in);
+
+        viagem = new Viagem();
 
         viagem.setId(id_generator.getAndIncrement());
 
@@ -45,30 +47,31 @@ public class ViagemController {
 
         viagem.setDataChegada(LocalDate.of(saidaAno, saidaMes, saidaDia));
 
-        calcularFretePeso(carga, rota, veiculo);
 
         viagens.add(viagem);
 
     }
 
-    public double calcularFretePeso(Carga carga, Rota rota, Veiculo veiculo) {
+    public void calcularFretePeso(Viagem viagem, Carga carga, Rota rota, Veiculo veiculo) {
+
+        double freteTotal = 0;
 
         double freteKM = rota.getDistancia() * 1.50;
 
         carga.setPesoOcupada(carga.getAltura() * carga.getComprimento() * carga.getLargura() * 300);
         if (carga.getPesoOcupada() > 0 && carga.getPesoOcupada() <= 200) {
-            return 100 + freteKM;
+            freteTotal = 100 + freteKM;
         } else if (carga.getPesoOcupada() > 200 && carga.getPesoOcupada() <= 500) {
-            return 150 + freteKM;
+            freteTotal = 150 + freteKM;
         } else if (carga.getPesoOcupada() > 500 && carga.getPesoOcupada() <= 800) {
-            return 200 + freteKM;
+            freteTotal = 200 + freteKM;
         } else if (carga.getPesoOcupada() > 800 && carga.getPesoOcupada() <= 12000) {
-            return 250 + freteKM;
+            freteTotal = 250 + freteKM;
         } else if (carga.getPesoOcupada() > 12000 && carga.getPesoOcupada() <= veiculo.getCapacidade()) {
-            return 300 + freteKM;
+            freteTotal = 300 + freteKM;
         }
-        return -1;
-
+        viagem.setFrete(freteTotal);
+        System.out.println("O Frete Calculado é de:" + freteTotal);
     }
 
     public Viagem listarViagens(long id) {
@@ -82,7 +85,7 @@ public class ViagemController {
 
     }
 
-    public void editarViagem(long id, Carga carga, Rota rota, Veiculo veiculo) {
+    public void editarViagem(long id) {
         int log = 0;
         for (Viagem viagem : viagens) {
             if (viagem.getId() == id) {
@@ -115,22 +118,25 @@ public class ViagemController {
 
                 viagem.setDataChegada(LocalDate.of(novaChegadaAno, novaChegadaMes, novaChegadaDia));
 
-                calcularFretePeso(carga, rota, veiculo);
-
                 viagens.add(log, viagemNovo);
             }
         }
     }
-        public void deletarViagem (long id){
-            int log = 0;
-            for (Viagem viagem : viagens) {
-                if (viagem.getId() == id) {
-                    viagens.remove(log);
-                }
-                log++;
 
+    public void deletarViagem(long id) {
+        int log = 0;
+        for (Viagem viagem : viagens) {
+            if (viagem.getId() == id) {
+                viagens.remove(log);
             }
+            log++;
+
         }
     }
+    public void printarViagem (Viagem viagem) {
+        System.out.println(viagem.toString());
+
+    }
+}
 
 

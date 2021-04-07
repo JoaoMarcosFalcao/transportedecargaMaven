@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Carga;
+import Model.Motorista;
 import Model.Rota;
 
 import java.util.ArrayList;
@@ -106,8 +107,18 @@ public class CargaNegocioController {
             }
             log++;
         }
-
     }
+        public void printarCarga(Carga carga) {
+            System.out.println();
+            System.out.println("O Peso da Carga é:" + carga.getPeso());
+            System.out.println("A Altura da Carga é:" + carga.getAltura());
+            System.out.println("O Comprimento da Carga é:" + carga.getComprimento());
+            System.out.println("A Largura da Carga é:" + carga.getLargura());
+            System.out.println("A Peso Ocupada no Veiculo da Carga é:" + carga.getPesoOcupada());
+            System.out.println("O Tipo de Carga é:" + carga.getTipoCarga());
+            System.out.println();
+        }
+
     public Carga getCarga(int i) {
         return cargas.get(i);
     }

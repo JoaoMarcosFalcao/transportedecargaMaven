@@ -92,6 +92,14 @@ public class RotaNegocioController {
             log++;
         }
     }
+    public void printarRotas (Rota rota) {
+        System.out.println();
+        System.out.println("A Cidade de Saida é:" + rota.getCidadeSaida());
+        System.out.println("A Cidade Final é:" + rota.getCidadeChegada());
+        System.out.println("A Distancia entre as cidades são:" + rota.getDistancia());
+        System.out.println("As Cidades pela qual a rota passa são:" + rota.getCidadesRotas());
+        System.out.println();
+    }
 
     public Rota getRotas(int i) {
         return rotas.get(i);
