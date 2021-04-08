@@ -25,7 +25,7 @@ public class Principal {
 
 
 
-            System.out.println("Escolha a categoria:" +
+            System.out.println("Escolha uma categoria:" +
                     "\n 1 para Carga" +
                     "\n 2 para Cliente" +
                     "\n 3 para Motorista" +
@@ -38,7 +38,12 @@ public class Principal {
 
             if (escolha == 1) {
                 //Código da Carga
-                System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar e 4 para Deletar");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar a Carga" +
+                        "\n 2 para Editar a Carga" +
+                        "\n 3 para Listar as Cargas" +
+                        "\n 4 para Deletar a Carga");
+
                 int cdCarga = leia.nextInt();
                 if (cdCarga == 1) {
                     cargaNegocioController.cadastrarCarga();
@@ -61,7 +66,11 @@ public class Principal {
 
             } else if (escolha == 2) {
                 //Código do Cliente
-                System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar e 4 para Deletar");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar o Cliente:" +
+                        "\n 2 para Editar o Cliente:" +
+                        "\n 3 para Listar os Clientes:" +
+                        "\n 4 para Deletar o Cliente:");
                 int cdCliente = leia.nextInt();
                 if (cdCliente == 1) {
                     clienteController.cadastrarCliente();
@@ -83,7 +92,11 @@ public class Principal {
                 }
             } else if (escolha == 3) {
                 //Código do Motorista
-                System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar e 4 para Deletar:");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar o Motorista:" +
+                        "\n 2 para Editar o Motorista:" +
+                        "\n 3 para Listar os Motoristas:" +
+                        "\n 4 para Deletar o Motorista:");
                 int cdMotorista = leia.nextInt();
                 if (cdMotorista == 1) {
                     motoristaController.cadastrarMotorista();
@@ -105,7 +118,11 @@ public class Principal {
                 }
             } else if (escolha == 4) {
                 //Código do Endereço
-                System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar e 4 para Deletar:");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar o Endereço:" +
+                        "\n 2 para Editar o Endereço:" +
+                        "\n 3 para Listar os Endereços:" +
+                        "\n 4 para Deletar o Endereço:");
                 int cdEndereco = leia.nextInt();
                 if (cdEndereco == 1) {
                     enderecoController.cadastrarEndereco();
@@ -127,7 +144,11 @@ public class Principal {
                 }
             } else if (escolha == 5) {
                 //Código do Telefone
-                System.out.println("Escolha: 1 para Cadastrar o Telefone // 2 para Editar // 3 para Listar e 4 para Deletar:");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar o Telefone:" +
+                        "\n 2 para Editar o Telefone:" +
+                        "\n 3 para Listar os Telefones:" +
+                        "\n 4 para Deletar o Telefone:");
                 int cdTelefone = leia.nextInt();
                 if (cdTelefone == 1) {
                     telefoneController.cadastrarTelefone();
@@ -150,7 +171,11 @@ public class Principal {
 
             } else if (escolha == 6) {
                     //Código do Rota
-                    System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar e 4 para Deletar:");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar uma Rota:" +
+                        "\n 2 para Editar a Rota:" +
+                        "\n 3 para Listar as Rotas:" +
+                        "\n 4 para Deletar a Rota:");
                     int cdRota = leia.nextInt();
                     if (cdRota == 1) {
                        rotaNegocioController.definirRotas();
@@ -172,7 +197,11 @@ public class Principal {
                     }
             } else if (escolha == 7) {
                 //Código do Veiculo
-                System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar e 4 para Deletar:");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar o Veiculo:" +
+                        "\n 2 para Editar o Veiculo:" +
+                        "\n 3 para Listar os Veiculos:" +
+                        "\n 4 para Deletar o Veiculo:");
                 int cdVeiculo = leia.nextInt();
                 if (cdVeiculo == 1) {
                     veiculoController.cadastrarVeiculo();
@@ -194,7 +223,12 @@ public class Principal {
                 }
             } else if (escolha == 8) {
                 //Código do Viagem
-                System.out.println("Escolha: 1 para Cadastrar // 2 para Editar // 3 para Listar // 4 para Deletar e 5 para Calcular Frete:");
+                System.out.println("Escolha uma das Opcões:"+
+                        "\n 1 para Cadastrar a Viagem:" +
+                        "\n 2 para Editar a Viagem:" +
+                        "\n 3 para Listar as Viagens:" +
+                        "\n 4 para Deletar a VIagem:" +
+                        "\n 5 para Calcular Frete da Viagem");
                 int cdViagem = leia.nextInt();
                 if (cdViagem == 1) {
                     viagemController.cadastrarViagem();
@@ -214,22 +248,23 @@ public class Principal {
                     vj = leia.nextInt();
                     viagemController.deletarViagem(vj);
                 } else if (cdViagem == 5) {
-                    System.out.println("Informe o ID da Carga");
+                    System.out.println("Informe o ID da Carga:");
                     int idCarga = leia.nextInt();
-                    System.out.println("Informe o ID da Rota");
+                    System.out.println("Informe o ID da Rota:");
                     int idRota = leia.nextInt();
-                    System.out.println("Informe o ID da Veiculo");
+                    System.out.println("Informe o ID da Veiculo:");
                     int idVeiculo = leia.nextInt();
-                    System.out.println("Informe o ID da Viagem");
+                    System.out.println("Informe o ID da Viagem:");
                     int idViagem = leia.nextInt();
 
                     viagemController.calcularFretePeso(viagemController.listarViagens(idViagem), cargaNegocioController.listarCarga(idCarga), rotaNegocioController.listarRotas(idRota), veiculoController.listarVeiculos(idVeiculo));
 
                 }
-                System.out.println("Deseja parar o programa? 1-Sim, 2-Nao");
+                System.out.println("Deseja encerrar o Sistema? 1-Sim, 2-Nao");
                 pararPrograma = leia.nextInt();
 
                 if (pararPrograma == 1) {
+                    System.out.println("Encerrando o Sistema!");
                     rodarPrograma = false;
                 }
 
