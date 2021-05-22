@@ -43,7 +43,7 @@ public class ClienteDao {
                 clientes.add(cliente);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar pessoas" + e.getMessage());
+            System.out.println("Erro ao listar clientes" + e.getMessage());
         }
         try {
             con.close();
@@ -56,21 +56,17 @@ public class ClienteDao {
 
     public boolean salvarCliente(Cliente cliente) {
         boolean isSalvo = false;
-        String queryCliente = "insert into cliente (nome, cpf, email, telefone, endereco)"
-                + "values(?,?,?,?,?);";
-        String queryEndereco = "insert into endereco (rua, numero, bairro, cidade, estado, idCliente)"
-                + "values (?,?,?,?,?,?)";
+        String queryCliente = "insert into cliente (nome, email, cpf)"
+                + "values(?,?,?);";
 
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(queryCliente);
             preparedStatement.setString(1, cliente.getNome());
-            preparedStatement.setString(2, cliente.getCpf());
-            preparedStatement.setString(3, cliente.getEmail());
+            preparedStatement.setString(2, cliente.getEmail());
+            preparedStatement.setString(3, cliente.getCpf());
 
             preparedStatement.execute();
-
-            int id = preparedStatement.executeUpdate("select last_insert_id()");
 
             con.commit();
             isSalvo = true;
@@ -92,15 +88,15 @@ public class ClienteDao {
         boolean isSalvo = false;
         String query = "UPDATE cliente"
                 + "SET = nome"
-                + "cpf = "
                 + "email = "
+                + "cpf = "
                 + "Where id =";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, cliente.getNome());
-            preparedStatement.setString(2, cliente.getCpf());
-            preparedStatement.setString(3, cliente.getEmail());
+            preparedStatement.setString(2, cliente.getEmail());
+            preparedStatement.setString(3, cliente.getCpf());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -133,8 +129,8 @@ public class ClienteDao {
                 Cliente cliente = new Cliente();
                 cliente.setId(set.getInt("id"));
                 cliente.setNome(set.getString("nome"));
-                cliente.setCpf(set.getString("cpf"));
                 cliente.setEmail(set.getString("email"));
+                cliente.setCpf(set.getString("cpf"));
 
                 clientes.add(cliente);
 
