@@ -9,6 +9,8 @@ public class Endereco {
     private String bairro;
     private String cidade;
     private String estado;
+    private int idCliente;
+    private int idMotorista;
 
     public Endereco() {
     }
@@ -67,5 +69,21 @@ public class Endereco {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdMotorista() {
+        return idMotorista;
+    }
+
+    public void setIdMotorista(int idMotorista) {
+        this.idMotorista = idMotorista;
     }
 }

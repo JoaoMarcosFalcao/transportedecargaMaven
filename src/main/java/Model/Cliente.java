@@ -1,13 +1,15 @@
 package Model;
 
+import java.util.List;
+
 public class Cliente {
 
     private long id;
     private String nome;
     private String email;
     private Telefone telefone;
-    private Endereco endereco;
     private String Cpf;
+    private int idEndereco;
 
 
     public long getId() {
@@ -38,16 +40,12 @@ public class Cliente {
         return telefone;
     }
 
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public String getCpf() {

@@ -1,12 +1,17 @@
 package Controller;
 
 import Model.Cliente;
+import Model.dao.ClienteDao;
+
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 public class ClienteController {
 
+    private ClienteDao clienteDao;
     private Cliente cliente;
     private static AtomicInteger id_generator = new AtomicInteger(0);
     private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -19,7 +24,7 @@ public class ClienteController {
         cliente.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe o Nome do Cliente:");
-         cliente.setNome(leia.next());
+        cliente.setNome(leia.next());
 
         System.out.println("Informe o email do Cliente:");
         cliente.setEmail(leia.next());
@@ -30,9 +35,17 @@ public class ClienteController {
         clientes.add(cliente);
 
     }
+
+    public List<Cliente> listarClientes() {
+        clienteDao = new ClienteDao();
+        List<Cliente> clientes;
+        return clientes = clienteDao.listarClientes();
+
+    }
+
     public Cliente listarClientes(long id) {
         for (Cliente cliente : clientes) {
-            if(cliente.getId() == id) {
+            if (cliente.getId() == id) {
                 return cliente;
             }
         }
@@ -42,10 +55,11 @@ public class ClienteController {
 
 
     }
+
     public void editarClientes(long id) {
         int log = 0;
         for (Cliente cliente : clientes) {
-            if(cliente.getId() == id) {
+            if (cliente.getId() == id) {
 
                 Cliente clienteNovo = new Cliente();
                 Scanner leia = new Scanner(System.in);
@@ -65,16 +79,18 @@ public class ClienteController {
             log++;
         }
     }
+
     public void deletarCliente(long id) {
         int log = 0;
         for (Cliente cliente : clientes) {
-            if(cliente.getId() == id) {
+            if (cliente.getId() == id) {
                 clientes.remove(log);
             }
             log++;
         }
     }
-    public void printarCliente (Cliente cliente) {
+
+    public void printarCliente(Cliente cliente) {
         System.out.println();
         System.out.println("O Nome do Cliente é:" + cliente.getNome());
         System.out.println("O Email do Cliente é" + cliente.getEmail());
@@ -82,6 +98,24 @@ public class ClienteController {
         System.out.println("O Enderenço do Clietne é:" + cliente.getEndereco());
         System.out.println("O CPF do Cliente é:" + cliente.getCpf());
         System.out.println();
+    }
+
+    public boolean salvarCliente(Cliente cliente) {
+        clienteDao = new ClienteDao();
+        boolean isSalvo = clienteDao.salvarCliente(cliente);
+        return isSalvo = false;
+    }
+
+    public boolean editarCliente(Cliente cliente) {
+        clienteDao = new ClienteDao();
+        boolean isSalvo = clienteDao.editarCliente(cliente);
+        return isSalvo = false;
+    }
+
+    public boolean deletarCliente(int id) {
+        clienteDao = new ClienteDao();
+        boolean isSalvo = clienteDao.deletarCliente(id);
+        return isSalvo = false;
     }
 }
 
