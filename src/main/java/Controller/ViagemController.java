@@ -23,7 +23,7 @@ public class ViagemController {
         viagem.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe a hora da saida:");
-        viagem.setHoraPartida(leia.nextDouble());
+        viagem.setHoraPartida(leia.next());
 
         System.out.println("Informe o ano de saida:");
         int saidaAno = leia.nextInt();
@@ -35,7 +35,7 @@ public class ViagemController {
         viagem.setDataSaida(LocalDate.of(saidaAno, saidaMes, saidaDia));
 
         System.out.println("Informe a hora da chegada:");
-        viagem.setHoraChegada(leia.nextDouble());
+        viagem.setHoraChegada(leia.next());
 
         System.out.println("Informe o ano de chegada:");
         int chegadaAno = leia.nextInt();
@@ -94,7 +94,7 @@ public class ViagemController {
                 Viagem viagemNovo = new Viagem();
 
                 System.out.println("Informe a nova hora da saida:");
-                viagemNovo.setHoraPartida(leia.nextDouble());
+                viagemNovo.setHoraPartida(leia.next());
 
                 System.out.println("Informe o novo ano de saida:");
                 int novaSaidaAno = leia.nextInt();
@@ -106,7 +106,7 @@ public class ViagemController {
                 viagem.setDataSaida(LocalDate.of(novaSaidaAno, novaSaidaMes, novaSaidaDia));
 
                 System.out.println("Informe a nova hora da chegada:");
-                viagemNovo.setHoraChegada(leia.nextDouble());
+                viagemNovo.setHoraChegada(leia.next());
 
                 System.out.println("Informe o novo ano de chegada:");
                 int novaChegadaAno = leia.nextInt();

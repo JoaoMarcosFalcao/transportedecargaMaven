@@ -6,14 +6,14 @@ public class Viagem {
 
 
     private long id;
-    private double horaPartida;
-    private double horaChegada;
+    private String horaPartida;
+    private String horaChegada;
     private LocalDate dataSaida;
     private LocalDate dataChegada;
-    private Carga carga;
-    private Veiculo veiculo;
-    private Motorista motorista;
-    private Rota rotas;
+    private int idCarga;
+    private int idVeiculo;
+    private int idMotorista;
+    private int idRota;
     private double frete;
 
     public Viagem() {
@@ -27,19 +27,19 @@ public class Viagem {
         this.id = id;
     }
 
-    public double getHoraPartida() {
+    public String getHoraPartida() {
         return horaPartida;
     }
 
-    public void setHoraPartida(double horaPartida) {
+    public void setHoraPartida(String horaPartida) {
         this.horaPartida = horaPartida;
     }
 
-    public double getHoraChegada() {
+    public String getHoraChegada() {
         return horaChegada;
     }
 
-    public void setHoraChegada(double horaChegada) {
+    public void setHoraChegada(String horaChegada) {
         this.horaChegada = horaChegada;
     }
 
@@ -59,36 +59,36 @@ public class Viagem {
         this.dataChegada = dataChegada;
     }
 
-    public Carga getCarga() {
-        return carga;
+    public int getIdCarga() {
+        return idCarga;
     }
 
-    public void setCarga(Carga carga) {
-        this.carga = carga;
+    public void setIdCarga(int idCarga) {
+        this.idCarga = idCarga;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public int getIdVeiculo() {
+        return idVeiculo;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
+    public void setIdVeiculo(int idVeiculo) {
+        this.idVeiculo = idVeiculo;
     }
 
-    public Motorista getMotorista() {
-        return motorista;
+    public int getIdMotorista() {
+        return idMotorista;
     }
 
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
+    public void setIdMotorista(int idMotorista) {
+        this.idMotorista = idMotorista;
     }
 
-    public Rota getRotas() {
-        return rotas;
+    public int getIdRota() {
+        return idRota;
     }
 
-    public void setRotas(Rota rotas) {
-        this.rotas = rotas;
+    public void setIdRota(int idRota) {
+        this.idRota = idRota;
     }
 
     public double getFrete() {
@@ -99,19 +99,19 @@ public class Viagem {
         this.frete = frete;
     }
 
-    @Override
-    public String toString() {
-        return "Viagem{" +
-                "id=" + id +
-                ", horaPartida=" + horaPartida +
-                ", horaChegada=" + horaChegada +
-                ", dataSaida=" + dataSaida +
-                ", dataChegada=" + dataChegada +
-                ", carga=" + carga +
-                ", veiculo=" + veiculo +
-                ", motorista=" + motorista +
-                ", rotas=" + rotas +
-                ", frete=" + frete +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Viagem{" +
+//                "id=" + id +
+//                ", horaPartida=" + horaPartida +
+//                ", horaChegada=" + horaChegada +
+//                ", dataSaida=" + dataSaida +
+//                ", dataChegada=" + dataChegada +
+//                ", carga=" + carga +
+//                ", veiculo=" + veiculo +
+//                ", motorista=" + motorista +
+//                ", rotas=" + rotas +
+//                ", frete=" + frete +
+//                '}';
+//    }
 }

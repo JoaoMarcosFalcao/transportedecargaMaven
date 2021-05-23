@@ -149,7 +149,7 @@ public class CargaDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao prcurar o carga" + e.getMessage());
+            System.out.println("Erro ao procurar o carga" + e.getMessage());
         }
         try {
             con.close();
