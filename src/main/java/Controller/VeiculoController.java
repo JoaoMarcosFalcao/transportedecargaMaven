@@ -1,19 +1,23 @@
 package Controller;
 
+import Model.Veiculo;
 import Model.Rota;
 import Model.Veiculo;
+import Model.dao.VeiculoDao;
+import Model.dao.VeiculoDao;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class VeiculoController {
-
+    
+    private VeiculoDao veiculoDao;
     private Veiculo veiculo;
     private static AtomicInteger id_generator = new AtomicInteger(0);
     private ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
 
-    public void cadastrarVeiculo() {
+    public Veiculo preencher() {
         veiculo = new Veiculo();
 
         Scanner leia = new Scanner(System.in);
@@ -38,62 +42,67 @@ public class VeiculoController {
         System.out.println("Informe a Capacidade do Veiculo:");
         veiculo.setCapacidade(leia.nextDouble());
 
+        veiculo.setId(id_generator.getAndIncrement());
+        System.out.println("O ID do veiculo registrado é: " + veiculo.getId());
+
         veiculos.add(veiculo);
-
+        
+        return veiculo;
     }
-    public Veiculo listarVeiculos(long id) {
-        for (Veiculo veiculo : veiculos) {
-            if(veiculo.getId() == id) {
-                return veiculo;
-            }
-        }
-
-
-        return null;
-
-
-    }
-    public void editarVeiculo(long id) {
-        int log = 0;
-        for (Veiculo veiculo : veiculos) {
-            if(veiculo.getId() == id) {
-
-                Veiculo veiculoNovo = new Veiculo();
-                Scanner leia = new Scanner(System.in);
-
-                System.out.println("Informe o Modelo do Veiculo:");
-                veiculoNovo.setModelo(leia.next());
-
-                System.out.println("Informe a Marca do Veiculo:");
-                veiculoNovo.setMarca(leia.next());
-
-                System.out.println("Informe o Ano do Veiculo:");
-                veiculoNovo.setAno(leia.nextDouble());
-
-                System.out.println("Informe a Placa do Veiculo:");
-                veiculoNovo.setPlaca(leia.next());
-
-                System.out.println("Informe o Renavam do Veiculo:");
-                veiculoNovo.setRENAVAM(leia.next());
-
-                System.out.println("Informe a Capacidade do Veiculo:");
-                veiculoNovo.setCapacidade(leia.nextDouble());
-
-                veiculos.set(log, veiculoNovo);
-
-            }
-            log++;
-        }
-    }
-    public void deletarVeiculos(long id) {
-        int log = 0;
-        for (Veiculo veiculo : veiculos) {
-            if(veiculo.getId() == id) {
-                veiculos.remove(log);
-            }
-            log++;
-        }
-    }
+//    }
+//    public Veiculo listarVeiculos(long id) {
+//        for (Veiculo veiculo : veiculos) {
+//            if(veiculo.getId() == id) {
+//                return veiculo;
+//            }
+//        }
+//
+//
+//        return null;
+//
+//
+//    }
+//    public void editarVeiculo(long id) {
+//        int log = 0;
+//        for (Veiculo veiculo : veiculos) {
+//            if(veiculo.getId() == id) {
+//
+//                Veiculo veiculoNovo = new Veiculo();
+//                Scanner leia = new Scanner(System.in);
+//
+//                System.out.println("Informe o Modelo do Veiculo:");
+//                veiculoNovo.setModelo(leia.next());
+//
+//                System.out.println("Informe a Marca do Veiculo:");
+//                veiculoNovo.setMarca(leia.next());
+//
+//                System.out.println("Informe o Ano do Veiculo:");
+//                veiculoNovo.setAno(leia.nextDouble());
+//
+//                System.out.println("Informe a Placa do Veiculo:");
+//                veiculoNovo.setPlaca(leia.next());
+//
+//                System.out.println("Informe o Renavam do Veiculo:");
+//                veiculoNovo.setRENAVAM(leia.next());
+//
+//                System.out.println("Informe a Capacidade do Veiculo:");
+//                veiculoNovo.setCapacidade(leia.nextDouble());
+//
+//                veiculos.set(log, veiculoNovo);
+//
+//            }
+//            log++;
+//        }
+//    }
+//    public void deletarVeiculos(long id) {
+//        int log = 0;
+//        for (Veiculo veiculo : veiculos) {
+//            if(veiculo.getId() == id) {
+//                veiculos.remove(log);
+//            }
+//            log++;
+//        }
+    
     public void printarVeiculo (Veiculo veiculo) {
         System.out.println();
         System.out.println("A Marca do Veiculo é:" + veiculo.getMarca());
@@ -107,5 +116,52 @@ public class VeiculoController {
     public Veiculo getVeiculo(int i) {
         return veiculos.get(i);
     }
+
+    public ArrayList<Veiculo> listarVeiculos() {
+        veiculoDao = new VeiculoDao();
+        ArrayList<Veiculo> veiculos = veiculoDao.listarVeiculos();
+        return veiculos;
+    }
+
+    public boolean salvarVeiculo() {
+        Veiculo veiculo = preencher();
+        veiculoDao = new VeiculoDao();
+        boolean isSalvo = veiculoDao.salvarVeiculo(veiculo);
+        return isSalvo = false;
+    }
+
+    public boolean editarVeiculos() {
+        veiculoDao = new VeiculoDao();
+        int id = digitarId();
+        Veiculo veiculo = preencher();
+        veiculo.setId(id);
+        boolean isSalvo = veiculoDao.editarVeiculo(veiculo);
+        return isSalvo;
+    }
+
+    public boolean deletarVeiculo() {
+        veiculoDao = new VeiculoDao();
+        int id = digitarId();
+        boolean isSalvo = veiculoDao.deletarVeiculo(id);
+        return isSalvo;
+    }
+
+    public void printAll(ArrayList<Veiculo> veiculos) {
+        for (Veiculo veiculo : veiculos) {
+            printarVeiculo(veiculo);
+        }
+    }
+    public Veiculo procurarPorId(int id) {
+        veiculoDao = new VeiculoDao();
+        Veiculo veiculo = veiculoDao.buscarVeiculoPorId(id);
+        return veiculo;
+    }
+    public int digitarId() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Qual o id: ");
+        int id = input.nextInt();
+        return id;
+    }
 }
+
 

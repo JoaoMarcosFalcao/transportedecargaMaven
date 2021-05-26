@@ -22,8 +22,8 @@ public class RotaDao {
 
     }
 
-    public List<Rota> listarRotas() {
-        List<Rota> rotas = new ArrayList();
+    public ArrayList<Rota> listarRotas() {
+        ArrayList<Rota> rotas = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();

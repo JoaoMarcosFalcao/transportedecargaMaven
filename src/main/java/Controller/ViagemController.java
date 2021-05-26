@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import Model.dao.ViagemDao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,10 +13,11 @@ public class ViagemController {
 
     private static AtomicInteger id_generator = new AtomicInteger(0);
     private Viagem viagem;
+    private ViagemDao viagemDao;
     private ArrayList<Viagem> viagens = new ArrayList<Viagem>();
 
 
-    public void cadastrarViagem() {
+    public Viagem preencher() {
         Scanner leia = new Scanner(System.in);
 
         viagem = new Viagem();
@@ -47,8 +49,21 @@ public class ViagemController {
 
         viagem.setDataChegada(LocalDate.of(saidaAno, saidaMes, saidaDia));
 
+        System.out.println("Informe o ID da Carga:");
+        int idCarga = leia.nextInt();
+
+        System.out.println("Informe o ID do Veiculo:");
+        int idVeiculo = leia.nextInt();
+
+        System.out.println("Informe o ID do Motorista:");
+        int idMotorista = leia.nextInt();
+
+        System.out.println("Informe o ID da Rota:");
+        int idRota = leia.nextInt();
 
         viagens.add(viagem);
+        
+        return viagem;
 
     }
 
@@ -73,70 +88,118 @@ public class ViagemController {
         viagem.setFrete(freteTotal);
         System.out.println("O Frete Calculado é de:" + freteTotal);
     }
-
-    public Viagem listarViagens(long id) {
-        for (Viagem viagem : viagens) {
-            if (viagem.getId() == id) {
-                return viagem;
-            }
-        }
-        return null;
-
-
-    }
-
-    public void editarViagem(long id) {
-        int log = 0;
-        for (Viagem viagem : viagens) {
-            if (viagem.getId() == id) {
-                Scanner leia = new Scanner(System.in);
-
-                Viagem viagemNovo = new Viagem();
-
-                System.out.println("Informe a nova hora da saida:");
-                viagemNovo.setHoraPartida(leia.next());
-
-                System.out.println("Informe o novo ano de saida:");
-                int novaSaidaAno = leia.nextInt();
-                System.out.println("Informe o novo mês de saida:");
-                int novaSaidaMes = leia.nextInt();
-                System.out.println("Informe o novo dia de saida:");
-                int novaSaidaDia = leia.nextInt();
-
-                viagem.setDataSaida(LocalDate.of(novaSaidaAno, novaSaidaMes, novaSaidaDia));
-
-                System.out.println("Informe a nova hora da chegada:");
-                viagemNovo.setHoraChegada(leia.next());
-
-                System.out.println("Informe o novo ano de chegada:");
-                int novaChegadaAno = leia.nextInt();
-                System.out.println("Informe o novo mês de chegada:");
-                int novaChegadaMes = leia.nextInt();
-                System.out.println("Informe o novo dia de chegada:");
-                int novaChegadaDia = leia.nextInt();
-
-
-                viagem.setDataChegada(LocalDate.of(novaChegadaAno, novaChegadaMes, novaChegadaDia));
-
-                viagens.add(log, viagemNovo);
-            }
-        }
-    }
-
-    public void deletarViagem(long id) {
-        int log = 0;
-        for (Viagem viagem : viagens) {
-            if (viagem.getId() == id) {
-                viagens.remove(log);
-            }
-            log++;
-
-        }
-    }
+//
+//    public Viagem listarViagens(long id) {
+//        for (Viagem viagem : viagens) {
+//            if (viagem.getId() == id) {
+//                return viagem;
+//            }
+//        }
+//        return null;
+//
+//
+//    }
+//
+//    public void editarViagem(long id) {
+//        int log = 0;
+//        for (Viagem viagem : viagens) {
+//            if (viagem.getId() == id) {
+//                Scanner leia = new Scanner(System.in);
+//
+//                Viagem viagemNovo = new Viagem();
+//
+//                System.out.println("Informe a nova hora da saida:");
+//                viagemNovo.setHoraPartida(leia.next());
+//
+//                System.out.println("Informe o novo ano de saida:");
+//                int novaSaidaAno = leia.nextInt();
+//                System.out.println("Informe o novo mês de saida:");
+//                int novaSaidaMes = leia.nextInt();
+//                System.out.println("Informe o novo dia de saida:");
+//                int novaSaidaDia = leia.nextInt();
+//
+//                viagem.setDataSaida(LocalDate.of(novaSaidaAno, novaSaidaMes, novaSaidaDia));
+//
+//                System.out.println("Informe a nova hora da chegada:");
+//                viagemNovo.setHoraChegada(leia.next());
+//
+//                System.out.println("Informe o novo ano de chegada:");
+//                int novaChegadaAno = leia.nextInt();
+//                System.out.println("Informe o novo mês de chegada:");
+//                int novaChegadaMes = leia.nextInt();
+//                System.out.println("Informe o novo dia de chegada:");
+//                int novaChegadaDia = leia.nextInt();
+//
+//
+//                viagem.setDataChegada(LocalDate.of(novaChegadaAno, novaChegadaMes, novaChegadaDia));
+//
+//                viagens.add(log, viagemNovo);
+//            }
+//        }
+//    }
+//
+//    public void deletarViagem(long id) {
+//        int log = 0;
+//        for (Viagem viagem : viagens) {
+//            if (viagem.getId() == id) {
+//                viagens.remove(log);
+//            }
+//            log++;
+//
+//        }
+//    }
     public void printarViagem (Viagem viagem) {
         System.out.println(viagem.toString());
 
     }
+
+
+    public ArrayList<Viagem> listarViagems() {
+        viagemDao = new ViagemDao();
+        ArrayList<Viagem> viagems = viagemDao.listarViagems();
+        return viagems;
+    }
+
+    public boolean salvarViagem() {
+        Viagem viagem = preencher();
+        viagemDao = new ViagemDao();
+        boolean isSalvo = viagemDao.salvarViagem(viagem);
+        return isSalvo = false;
+    }
+
+    public boolean editarViagems() {
+        viagemDao = new ViagemDao();
+        int id = digitarId();
+        Viagem viagem = preencher();
+        viagem.setId(id);
+        boolean isSalvo = viagemDao.editarViagem(viagem);
+        return isSalvo;
+    }
+
+    public boolean deletarViagem() {
+        viagemDao = new ViagemDao();
+        int id = digitarId();
+        boolean isSalvo = viagemDao.deletarViagem(id);
+        return isSalvo;
+    }
+
+    public void printAll(ArrayList<Viagem> viagems) {
+        for (Viagem viagem : viagems) {
+            printarViagem(viagem);
+        }
+    }
+    public Viagem procurarPorId(int id) {
+        viagemDao = new ViagemDao();
+        Viagem viagem = viagemDao.buscarViagemPorId(id);
+        return viagem;
+    }
+    public int digitarId() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Qual o id: ");
+        int id = input.nextInt();
+        return id;
+    }
 }
+
 
 

@@ -22,8 +22,8 @@ public class VeiculoDao {
 
     }
 
-    public List<Veiculo> listarVeiculos() {
-        List<Veiculo> veiculos = new ArrayList();
+    public ArrayList<Veiculo> listarVeiculos() {
+        ArrayList<Veiculo> veiculos = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();

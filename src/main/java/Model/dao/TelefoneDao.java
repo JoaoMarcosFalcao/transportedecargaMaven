@@ -24,8 +24,8 @@ public class TelefoneDao {
 
     }
 
-    public List<Telefone> listarTelefonesDosClientes() {
-        List<Telefone> telefones = new ArrayList();
+    public ArrayList<Telefone> listarTelefonesDosClientes() {
+        ArrayList<Telefone> telefones = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();
@@ -34,10 +34,10 @@ public class TelefoneDao {
             while (set.next()) {
                 Telefone telefone = new Telefone();
                 telefone.setId(set.getInt("id"));
-                telefone.setCodigoArea(set.getString("Codigo de Area"));
+                telefone.setCodigoArea(set.getString("CodigodeArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero"));
-                telefone.setIdCliente(set.getInt("idCliente"));
+               // telefone.setIdCliente(set.getInt("idCliente"));
 
                 telefones.add(telefone);
             }
@@ -56,7 +56,7 @@ public class TelefoneDao {
 
     public boolean salvarTelefoneDosClientes(Telefone telefone) {
         boolean isSalvo = false;
-        String queryTelefone = "insert into telefone (codigoArea, ddd, numero, idCliente)"
+        String queryTelefone = "insert into telefone (codigoArea, ddd, numero)"
                 + "values(?,?,?,?);";
 
         try {
@@ -65,7 +65,7 @@ public class TelefoneDao {
             preparedStatement.setString(1, telefone.getCodigoArea());
             preparedStatement.setString(2, telefone.getDDD());
             preparedStatement.setString(3, telefone.getNumero());
-            preparedStatement.setInt(4, (int) telefone.getIdCliente());
+          //  preparedStatement.setInt(4, (int) telefone.getIdCliente());
 
             preparedStatement.execute();
 
@@ -98,7 +98,7 @@ public class TelefoneDao {
             preparedStatement.setString(1, telefone.getCodigoArea());
             preparedStatement.setString(2, telefone.getDDD());
             preparedStatement.setString(3, telefone.getNumero());
-            preparedStatement.setInt(4, (int) telefone.getIdCliente());
+          //  preparedStatement.setInt(4, (int) telefone.getIdCliente());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -133,7 +133,7 @@ public class TelefoneDao {
                 telefone.setCodigoArea(set.getString("Codigo de Area"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero do Telefone"));
-                telefone.setIdCliente(set.getInt("idCliente"));
+               // telefone.setIdCliente(set.getInt("idCliente"));
 
                 telefones.add(telefone);
 
@@ -186,8 +186,8 @@ public class TelefoneDao {
 //Telefone dos Motoristas
 
 
-    public List<Telefone> listarTelefonesDosMotoristas() {
-        List<Telefone> telefones = new ArrayList();
+    public ArrayList<Telefone> listarTelefonesDosMotoristas() {
+        ArrayList<Telefone> telefones = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();
@@ -216,7 +216,7 @@ public class TelefoneDao {
     }
 
 
-    public boolean salvarTelefone(Telefone telefone) {
+    public boolean salvarTelefoneDoMotorista(Telefone telefone) {
         boolean isSalvo = false;
         String queryTelefone = "insert into telefone (codigoArea, ddd, numero, idMotorista)"
                 + "values(?,?,?,?);";

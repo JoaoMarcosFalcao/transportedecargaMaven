@@ -2,6 +2,9 @@ package Controller;
 
 
 import Model.Motorista;
+import Model.Motorista;
+import Model.dao.MotoristaDao;
+import Model.dao.MotoristaDao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,11 +13,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MotoristaController {
 
+    private MotoristaDao motoristaDao;
     private Motorista motorista;
     private static AtomicInteger id_generator = new AtomicInteger(0);
     private ArrayList<Motorista> motoristas = new ArrayList<Motorista>();
 
-    public void cadastrarMotorista() {
+    public Motorista preencher() {
         motorista = new Motorista();
 
         Scanner leia = new Scanner(System.in);
@@ -39,62 +43,66 @@ public class MotoristaController {
 
         motorista.setValidadeCHN(LocalDate.of(anoValidade, mesValidade, diaValidade));
 
+        motorista.setId(id_generator.getAndIncrement());
+        System.out.println("O ID do endereco registrado é: " + motorista.getId());
+
         motoristas.add(motorista);
 
-    }
-    public Motorista listarMotorista(long id) {
-        for (Motorista motorista : motoristas) {
-            if(motorista.getId() == id) {
-                return motorista;
-            }
-        }
+        return motorista;
+//    }
+//    public Motorista listarMotorista(long id) {
+//        for (Motorista motorista : motoristas) {
+//            if(motorista.getId() == id) {
+//                return motorista;
+//            }
+//        }
+//
+//
+//        return null;
+//
+//
+//    }
+//    public void editarMotorista(long id) {
+//        int log = 0;
+//        for (Motorista motorista : motoristas) {
+//            if(motorista.getId() == id) {
+//
+//                Motorista motoristaNovo = new Motorista();
+//                Scanner leia = new Scanner(System.in);
+//
+//                System.out.println("Informe o Nome do Motorista:");
+//                motoristaNovo.setNome(leia.next());
+//
+//                System.out.println("Informe o email do Motorista:");
+//                motoristaNovo.setEmail(leia.next());
+//
+//                System.out.println("Informe a CNH do Motorista:");
+//                motoristaNovo.setCNH(leia.next());
+//
+//                System.out.println("Informe o ano da validade da CNH:");
+//                int novoAnoValidade = leia.nextInt();
+//                System.out.println("Informe o mês da validade da CNH:");
+//                int novoMesValidade = leia.nextInt();
+//                System.out.println("Informe o dia da validade da CNH:");
+//                int novoDiaValidade = leia.nextInt();
+//
+//                motoristaNovo.setValidadeCHN(LocalDate.of(novoAnoValidade, novoMesValidade, novoDiaValidade));
+//
+//                motoristas.set(log, motoristaNovo);
+//
+//            }
+//            log++;
+//        }
+//    }
+//    public void deletarMotorista(long id) {
+//        int log = 0;
+//        for (Motorista motorista : motoristas) {
+//            if(motorista.getId() == id) {
+//                motoristas.remove(log);
+//            }
+//            log++;
+  }
 
-
-        return null;
-
-
-    }
-    public void editarMotorista(long id) {
-        int log = 0;
-        for (Motorista motorista : motoristas) {
-            if(motorista.getId() == id) {
-
-                Motorista motoristaNovo = new Motorista();
-                Scanner leia = new Scanner(System.in);
-
-                System.out.println("Informe o Nome do Motorista:");
-                motoristaNovo.setNome(leia.next());
-
-                System.out.println("Informe o email do Motorista:");
-                motoristaNovo.setEmail(leia.next());
-
-                System.out.println("Informe a CNH do Motorista:");
-                motoristaNovo.setCNH(leia.next());
-
-                System.out.println("Informe o ano da validade da CNH:");
-                int novoAnoValidade = leia.nextInt();
-                System.out.println("Informe o mês da validade da CNH:");
-                int novoMesValidade = leia.nextInt();
-                System.out.println("Informe o dia da validade da CNH:");
-                int novoDiaValidade = leia.nextInt();
-
-                motoristaNovo.setValidadeCHN(LocalDate.of(novoAnoValidade, novoMesValidade, novoDiaValidade));
-
-                motoristas.set(log, motoristaNovo);
-
-            }
-            log++;
-        }
-    }
-    public void deletarMotorista(long id) {
-        int log = 0;
-        for (Motorista motorista : motoristas) {
-            if(motorista.getId() == id) {
-                motoristas.remove(log);
-            }
-            log++;
-        }
-    }
     public void printarMotorista(Motorista motorista) {
         System.out.println();
         System.out.println("O Nome do motorista é:" + motorista.getNome());
@@ -106,5 +114,52 @@ public class MotoristaController {
         System.out.println();
 
     }
+
+    public ArrayList<Motorista> listarMotoristas() {
+        motoristaDao = new MotoristaDao();
+        ArrayList<Motorista> motoristas = motoristaDao.listarMotoristas();
+        return motoristas;
+    }
+
+    public boolean salvarMotorista() {
+        Motorista motorista = preencher();
+        motoristaDao = new MotoristaDao();
+        boolean isSalvo = motoristaDao.salvarMotorista(motorista);
+        return isSalvo = false;
+    }
+
+    public boolean editarMotoristas() {
+        motoristaDao = new MotoristaDao();
+        int id = digitarId();
+        Motorista motorista = preencher();
+        motorista.setId(id);
+        boolean isSalvo = motoristaDao.editarMotorista(motorista);
+        return isSalvo;
+    }
+
+    public boolean deletarMotorista() {
+        motoristaDao = new MotoristaDao();
+        int id = digitarId();
+        boolean isSalvo = motoristaDao.deletarMotorista(id);
+        return isSalvo;
+    }
+
+    public void printAll(ArrayList<Motorista> motoristas) {
+        for (Motorista motorista : motoristas) {
+            printarMotorista(motorista);
+        }
+    }
+    public Motorista procurarPorId(int id) {
+        motoristaDao = new MotoristaDao();
+        Motorista motorista = motoristaDao.buscarMotoristaPorId(id);
+        return motorista;
+    }
+    public int digitarId() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Qual o id: ");
+        int id = input.nextInt();
+        return id;
+    }
 }
+
 

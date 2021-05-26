@@ -9,7 +9,7 @@ public class ConnectionFactory {
 
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:9000/db_transporte","root","36261045mysql");
             return con;
         } catch (Exception e) {

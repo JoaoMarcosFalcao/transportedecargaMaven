@@ -23,8 +23,8 @@ public class CargaDao {
 
     }
 
-    public List<Carga> listarCargas() {
-        List<Carga> cargas = new ArrayList();
+    public ArrayList<Carga> listarCargas() {
+        ArrayList<Carga> cargas = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();

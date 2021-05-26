@@ -25,8 +25,8 @@ public class MotoristaDao {
 
     }
 
-    public List<Motorista> listarMotoristas() {
-        List<Motorista> motoristas = new ArrayList();
+    public ArrayList<Motorista> listarMotoristas() {
+        ArrayList<Motorista> motoristas = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();

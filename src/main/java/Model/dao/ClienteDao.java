@@ -26,8 +26,8 @@ public class ClienteDao {
 
     }
 
-    public List<Cliente> listarClientes() {
-        List<Cliente> clientes = new ArrayList();
+    public ArrayList<Cliente> listarClientes() {
+        ArrayList<Cliente> clientes = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();
@@ -39,6 +39,8 @@ public class ClienteDao {
                 cliente.setNome(set.getString("nome"));
                 cliente.setCpf(set.getString("cpf"));
                 cliente.setEmail(set.getString("email"));
+                cliente.setIdTelefone(set.getInt("IDTelefone"));
+                cliente.setIdEndereco(set.getInt("IDEndereco"));
 
                 clientes.add(cliente);
             }
@@ -56,15 +58,18 @@ public class ClienteDao {
 
     public boolean salvarCliente(Cliente cliente) {
         boolean isSalvo = false;
-        String queryCliente = "insert into cliente (nome, email, cpf)"
-                + "values(?,?,?);";
+        String queryCliente = "insert into cliente (nome, cpf, email, idTelefone, idEndereco)"
+                + "values(?,?,?,?,?);";
 
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(queryCliente);
             preparedStatement.setString(1, cliente.getNome());
-            preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setString(3, cliente.getCpf());
+            preparedStatement.setString(2, cliente.getEmail());
+            preparedStatement.setInt(4, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(5, (int) cliente.getIdTelefone());
+
 
             preparedStatement.execute();
 
@@ -88,15 +93,19 @@ public class ClienteDao {
         boolean isSalvo = false;
         String query = "UPDATE cliente"
                 + "SET = nome"
-                + "email = "
                 + "cpf = "
+                + "email = "
+                + "idTelefone = "
+                + "idEndereco = "
                 + "Where id =";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, cliente.getNome());
-            preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setString(3, cliente.getCpf());
+            preparedStatement.setString(2, cliente.getEmail());
+            preparedStatement.setInt(4, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(5, (int) cliente.getIdTelefone());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -131,6 +140,8 @@ public class ClienteDao {
                 cliente.setNome(set.getString("nome"));
                 cliente.setEmail(set.getString("email"));
                 cliente.setCpf(set.getString("cpf"));
+                cliente.setIdTelefone(set.getInt("ID Telefone"));
+                cliente.setIdEndereco(set.getInt("ID Endereco"));
 
                 clientes.add(cliente);
 
@@ -155,6 +166,8 @@ public class ClienteDao {
                 + "SET = nome"
                 + "cpf = "
                 + "email = "
+                + "idTelefone = "
+                + "idEndereco = "
                 + "Where id =";
         try {
             con.setAutoCommit(false);

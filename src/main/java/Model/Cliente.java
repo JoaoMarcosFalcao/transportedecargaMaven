@@ -9,8 +9,8 @@ public class Cliente {
     private String email;
     private Telefone telefone;
     private String Cpf;
+    private int idTelefone;
     private int idEndereco;
-
 
     public long getId() {
         return id;
@@ -46,6 +46,14 @@ public class Cliente {
 
     public void setIdEndereco(int idEndereco) {
         this.idEndereco = idEndereco;
+    }
+
+    public int getIdTelefone() {
+        return idTelefone;
+    }
+
+    public void setIdTelefone(int idTelefone) {
+        this.idTelefone = idTelefone;
     }
 
     public String getCpf() {

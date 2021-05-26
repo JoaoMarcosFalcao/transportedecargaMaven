@@ -24,8 +24,8 @@ public class ViagemDao {
 
     }
 
-    public List<Viagem> listarViagems() {
-        List<Viagem> viagems = new ArrayList();
+    public ArrayList<Viagem> listarViagems() {
+        ArrayList<Viagem> viagems = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();

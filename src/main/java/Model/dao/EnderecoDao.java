@@ -25,8 +25,8 @@ public class EnderecoDao {
     }
 
 
-    public List<Endereco> listarEnderecosDosClientes() {
-        List<Endereco> enderecos = new ArrayList();
+    public ArrayList<Endereco> listarEnderecosDosClientes() {
+        ArrayList<Endereco> enderecos = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();
@@ -203,8 +203,8 @@ public class EnderecoDao {
 
 
 
-    public List<Endereco> listarEnderecosDosMotoristas() {
-        List<Endereco> enderecos = new ArrayList();
+    public ArrayList<Endereco> listarEnderecosDosMotoristas() {
+        ArrayList<Endereco> enderecos = new ArrayList();
         ResultSet set;
         try {
             statement = con.createStatement();
