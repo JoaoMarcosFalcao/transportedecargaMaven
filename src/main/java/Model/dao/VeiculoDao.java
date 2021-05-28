@@ -42,13 +42,13 @@ public class VeiculoDao {
                 veiculos.add(veiculo);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar os veiculos" + e.getMessage());
+            System.out.println("Erro ao listar os veiculos!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return veiculos;
     }
@@ -74,28 +74,28 @@ public class VeiculoDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir veiculo" + e.getMessage());
+            System.out.println("Erro ao inserir veiculo!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
 
     public boolean editarVeiculo(Veiculo veiculo) {
         boolean isSalvo = false;
-        String query = "UPDATE veiculo"
-                + "SET = modelo"
-                + "marca = "
-                + "ano = "
-                + "placa = "
-                + "renavam = "
-                + "capacidade = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.veiculo "
+                + "SET = modelo = ?,"
+                + "marca = ?, "
+                + "ano = ?, "
+                + "placa = ?, "
+                + "renavam = ?, "
+                + "capacidade = ? "
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -111,14 +111,14 @@ public class VeiculoDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar o veiculo" + e.getMessage());
+            System.out.println("Erro ao editar o veiculo!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -148,13 +148,13 @@ public class VeiculoDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao procurar o veiculo" + e.getMessage());
+            System.out.println("Erro ao procurar o veiculo!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return veiculos.get(0);
     }
@@ -162,14 +162,7 @@ public class VeiculoDao {
 
     public boolean deletarVeiculo(int id) {
         boolean isSalvo = false;
-        String query = "delete from veiculo where id = "
-                + "SET = modelo"
-                + "marca = "
-                + "ano = "
-                + "placa = "
-                + "renavam = "
-                + "capacidade = "
-                + "Where id =";
+        String query = "delete from veiculo where id = ?";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -181,14 +174,14 @@ public class VeiculoDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o veiculo" + e.getMessage());
+            System.out.println("Erro ao deletar o veiculo!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }

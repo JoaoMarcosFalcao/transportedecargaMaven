@@ -28,17 +28,14 @@ public class TelefoneController {
 
         telefone.setId(id_generator.getAndIncrement());
 
-        System.out.println("Informe o Código de área: ");
+        System.out.println("Informe o Código de Área: ");
         telefone.setCodigoArea(leia.next());
 
         System.out.println("Informe o DDD: ");
         telefone.setDDD(leia.next());
 
-        System.out.println("Informe o número do telefone: ");
+        System.out.println("Informe o Número do Telefone: ");
         telefone.setNumero(leia.next());
-
-        telefone.setId(id_generator.getAndIncrement());
-        System.out.println("O ID do telefone registrado é: " + telefone.getId());
 
         telefones.add(telefone);
         
@@ -162,7 +159,7 @@ public class TelefoneController {
     }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID do Telefone que deseja modificar? ");
         int id = input.nextInt();
         return id;
     }

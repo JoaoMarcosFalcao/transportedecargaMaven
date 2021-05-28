@@ -43,13 +43,13 @@ public class CargaDao {
                 cargas.add(carga);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar cargas" + e.getMessage());
+            System.out.println("Erro ao listar cargas!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return cargas;
     }
@@ -75,28 +75,28 @@ public class CargaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir carga" + e.getMessage());
+            System.out.println("Erro ao inserir carga!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
 
     public boolean editarCarga(Carga carga) {
         boolean isSalvo = false;
-        String query = "UPDATE carga"
-                + "SET = peso"
-                + "altura = "
-                + "comprimento = "
-                + "largura = "
-                + "pesoOcupado = "
-                + "tipoCarga = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.carga "
+                + "SET = peso = ?,"
+                + "altura = ?,"
+                + "comprimento = ?,"
+                + "largura = ?,"
+                + "pesoOcupado = ?,"
+                + "tipoCarga = ?"
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -106,20 +106,21 @@ public class CargaDao {
             preparedStatement.setDouble(4, carga.getLargura());
             preparedStatement.setDouble(5, carga.getPesoOcupada());
             preparedStatement.setString(6, carga.getTipoCarga().name());
+            preparedStatement.setInt(6, (int) carga.getId());
 
             preparedStatement.executeUpdate();
             con.commit();
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar o carga" + e.getMessage());
+            System.out.println("Erro ao editar o carga!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -163,14 +164,7 @@ public class CargaDao {
 
     public boolean deletarCarga(int id) {
         boolean isSalvo = false;
-        String query = "delete from carga where id = "
-                + "SET = peso"
-                + "altura = "
-                + "comprimento = "
-                + "largura = "
-                + "pesoOcupado = "
-                + "tipoCarga = "
-                + "Where id =";
+        String query = "delete from carga where id = ?";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -182,14 +176,14 @@ public class CargaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar a carga" + e.getMessage());
+            System.out.println("Erro ao deletar a carga!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }

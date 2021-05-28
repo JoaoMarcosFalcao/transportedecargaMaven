@@ -118,7 +118,7 @@ public class CargaNegocioController {
             System.out.println("A Altura da Carga é:" + carga.getAltura());
             System.out.println("O Comprimento da Carga é:" + carga.getComprimento());
             System.out.println("A Largura da Carga é:" + carga.getLargura());
-            System.out.println("A Peso Ocupada no Veiculo da Carga é:" + carga.getPesoOcupada());
+            System.out.println("O Peso Ocupado no Veiculo é:" + carga.getPesoOcupada());
             System.out.println("O Tipo de Carga é:" + carga.getTipoCarga());
             System.out.println();
         }
@@ -133,7 +133,7 @@ public boolean salvarCarga() {
         Carga carga = preencher();
         cargaDao = new CargaDao();
         boolean isSalvo = cargaDao.salvarCarga(carga);
-        return isSalvo = false;
+        return isSalvo;
         }
 
 public boolean editarCargas() {
@@ -164,7 +164,7 @@ public Carga procurarPorId(int id) {
         }
 public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID da Carga que deseja modifcar?: ");
         int id = input.nextInt();
         return id;
         }

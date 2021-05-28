@@ -47,13 +47,13 @@ public class ViagemDao {
                 viagems.add(viagem);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar as viagens" + e.getMessage());
+            System.out.println("Erro ao listar as viagens!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return viagems;
     }
@@ -82,31 +82,31 @@ public class ViagemDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir a viagem" + e.getMessage());
+            System.out.println("Erro ao inserir a viagem!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
 
     public boolean editarViagem(Viagem viagem) {
         boolean isSalvo = false;
-        String query = "UPDATE viagem"
-                + "SET = horaPartida"
-                + "horaChegada = "
-                + "dataSaida = "
-                + "dataChegada = "
-                + "idCarga = "
-                + "idVeiculo = "
-                + "idMotorista = "
-                + "idRota = "
-                + "frete = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.viagem "
+                + "SET = horaPartida = ?,"
+                + "horaChegada = ?, "
+                + "dataSaida = ?, "
+                + "dataChegada = ?, "
+                + "idCarga = ?, "
+                + "idVeiculo = ?, "
+                + "idMotorista = ?, "
+                + "idRota = ?, "
+                + "frete = ? "
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -125,14 +125,14 @@ public class ViagemDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar a viagem" + e.getMessage());
+            System.out.println("Erro ao editar a viagem!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -165,13 +165,13 @@ public class ViagemDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao procurar a viagem" + e.getMessage());
+            System.out.println("Erro ao procurar a viagem!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return viagems.get(0);
     }
@@ -179,17 +179,8 @@ public class ViagemDao {
 
     public boolean deletarViagem(int id) {
         boolean isSalvo = false;
-        String query = "delete from viagem where id = "
-                + "SET = horaPartida"
-                + "horaChegada = "
-                + "dataSaida = "
-                + "dataChegada = "
-                + "idCarga = "
-                + "idVeiculo = "
-                + "idMotorista = "
-                + "idRota = "
-                + "frete = "
-                + "Where id =";
+        String query = "delete from viagem where id = ?";
+
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);

@@ -38,11 +38,9 @@ public class RotaNegocioController {
             cp = leia.nextInt();
             rotas.add(rota);
 
-            rota.setId(id_generator.getAndIncrement());
-            System.out.println("O ID da rota registrado é: " + rota.getId());
-            return rota;
-        }
 
+        }
+        return rota;
 
 //    }
 //
@@ -97,14 +95,12 @@ public class RotaNegocioController {
 //            }
 //            log++;
 
-
-        return null;
     }
     public void printarRotas(Rota rota) {
         System.out.println();
         System.out.println("A Cidade de Saida é:" + rota.getCidadeSaida());
         System.out.println("A Cidade Final é:" + rota.getCidadeChegada());
-        System.out.println("A Distancia entre as cidades são:" + rota.getDistancia());
+        System.out.println("A Distancia entre as cidades é:" + rota.getDistancia());
         System.out.println("As Cidades pela qual a rota passa são:" + rota.getCidadesRotas());
         System.out.println();
     }
@@ -116,10 +112,10 @@ public class RotaNegocioController {
     }
 
     public boolean salvarRota() {
-        Rota rota = preencher();
         rotaDao = new RotaDao();
+        Rota rota = preencher();
         boolean isSalvo = rotaDao.salvarRota(rota);
-        return isSalvo = false;
+        return isSalvo;
     }
 
     public boolean editarRotas() {
@@ -152,7 +148,7 @@ public class RotaNegocioController {
 
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID da Rota que deseja modificar? ");
         int id = input.nextInt();
         return id;
     }

@@ -156,7 +156,7 @@ public class EnderecoController {
     }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o ID do Endereco: ");
+        System.out.println("Qual é o ID do Endereco que deseja modificar? ");
         int id = input.nextInt();
         return id;
     }

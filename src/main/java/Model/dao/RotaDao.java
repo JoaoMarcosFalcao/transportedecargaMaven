@@ -40,13 +40,13 @@ public class RotaDao {
                 rotas.add(rota);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar rotas" + e.getMessage());
+            System.out.println("Erro ao listar rotas!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return rotas;
     }
@@ -70,26 +70,26 @@ public class RotaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir rota" + e.getMessage());
+            System.out.println("Erro ao inserir rota!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
 
     public boolean editarRota(Rota rota) {
         boolean isSalvo = false;
-        String query = "UPDATE rota"
-                + "SET = cidadeSaida"
-                + "cidadeChegada = "
-                + "distancia = "
-                + "cidadeParadas = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.rota "
+                + "SET = cidadeSaida = ?,"
+                + "cidadeChegada = ?, "
+                + "distancia = ?, "
+                + "cidadeParadas = ? "
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -138,13 +138,13 @@ public class RotaDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao prcurar o rota" + e.getMessage());
+            System.out.println("Erro ao prcurar o rota!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return rotas.get(0);
     }
@@ -152,12 +152,8 @@ public class RotaDao {
 
     public boolean deletarRota(int id) {
         boolean isSalvo = false;
-        String query = "delete from rota where id = "
-                + "SET = cidadeSaida"
-                + "cidadeChegada = "
-                + "distancia = "
-                + "cidadeParadas = "
-                + "Where id =";
+        String query = "delete from rota where id = ?";
+
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -169,14 +165,14 @@ public class RotaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o rota" + e.getMessage());
+            System.out.println("Erro ao deletar o rota!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }

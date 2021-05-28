@@ -113,9 +113,6 @@ public class VeiculoController {
         System.out.println("A Capacidade de Carga Total do Veiculo é:" + veiculo.getCapacidade());
         System.out.println();
     }
-    public Veiculo getVeiculo(int i) {
-        return veiculos.get(i);
-    }
 
     public ArrayList<Veiculo> listarVeiculos() {
         veiculoDao = new VeiculoDao();
@@ -127,7 +124,7 @@ public class VeiculoController {
         Veiculo veiculo = preencher();
         veiculoDao = new VeiculoDao();
         boolean isSalvo = veiculoDao.salvarVeiculo(veiculo);
-        return isSalvo = false;
+        return isSalvo ;
     }
 
     public boolean editarVeiculos() {
@@ -158,7 +155,7 @@ public class VeiculoController {
     }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID do Veiculo que deseja modificar? ");
         int id = input.nextInt();
         return id;
     }

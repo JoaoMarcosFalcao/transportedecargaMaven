@@ -43,13 +43,13 @@ public class MotoristaDao {
                 motoristas.add(motorista);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar motoristas" + e.getMessage());
+            System.out.println("Erro ao listar motoristas!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return motoristas;
     }
@@ -73,25 +73,26 @@ public class MotoristaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir motorista" + e.getMessage());
+            System.out.println("Erro ao inserir motorista!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
 
     public boolean editarMotorista(Motorista motorista) {
         boolean isSalvo = false;
-        String query = "UPDATE motorista"
-                + "SET = nome"
-                + "cpf = "
-                + "email = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.motorista "
+                + "SET = nome = ?,"
+                + "email = ?,"
+                + "cnh = ?,"
+                + "validadeCHN = ?"
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -105,14 +106,14 @@ public class MotoristaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar o motorista" + e.getMessage());
+            System.out.println("Erro ao editar o motorista!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -140,13 +141,13 @@ public class MotoristaDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao prcurar o motorista" + e.getMessage());
+            System.out.println("Erro ao prcurar o motorista!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return motoristas.get(0);
     }
@@ -154,11 +155,7 @@ public class MotoristaDao {
 
     public boolean deletarMotorista(int id) {
         boolean isSalvo = false;
-        String query = "delete from motorista where id = "
-                + "SET = nome"
-                + "cpf = "
-                + "email = "
-                + "Where id =";
+        String query = "delete from motorista where id = ?";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -170,14 +167,14 @@ public class MotoristaDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o motorista" + e.getMessage());
+            System.out.println("Erro ao deletar o motorista!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }

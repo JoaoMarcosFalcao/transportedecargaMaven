@@ -44,13 +44,13 @@ public class EnderecoDao {
                 enderecos.add(endereco);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar endereços" + e.getMessage());
+            System.out.println("Erro ao listar os endereços!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return enderecos;
     }
@@ -75,14 +75,14 @@ public class EnderecoDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir endereco" + e.getMessage());
+            System.out.println("Erro ao inserir endereco!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -111,14 +111,14 @@ public class EnderecoDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar o endereco" + e.getMessage());
+            System.out.println("Erro ao editar o endereco!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -147,13 +147,13 @@ public class EnderecoDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao prcurar o endereco" + e.getMessage());
+            System.out.println("Erro ao procurar o endereco!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return enderecos.get(0);
     }
@@ -174,14 +174,14 @@ public class EnderecoDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o endereco" + e.getMessage());
+            System.out.println("Erro ao deletar o endereco!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -259,13 +259,13 @@ public class EnderecoDao {
 
     public boolean editarEnderecoDoMotorista(Endereco endereco) {
         boolean isSalvo = false;
-        String query = "UPDATE endereco"
-                + "SET = rua"
-                + "numero = "
-                + "bairro = "
-                + "cidade = "
-                + "estado = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.endereco "
+                + "SET rua = ?,"
+                + "numero = ?,"
+                + "bairro = ?,"
+                + "cidade = ?,"
+                + "estado = ? "
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -274,6 +274,7 @@ public class EnderecoDao {
             preparedStatement.setString(3, endereco.getBairro());
             preparedStatement.setString(4, endereco.getCidade());
             preparedStatement.setString(5, endereco.getEstado());
+            preparedStatement.setInt(6,(int) endereco.getId());
 
 
             preparedStatement.executeUpdate();
@@ -331,13 +332,8 @@ public class EnderecoDao {
 
     public boolean deletarEnderecoDoMotorista(int id) {
         boolean isSalvo = false;
-        String query = "delete from endereco where id = "
-                + "SET = rua"
-                + "numero = "
-                + "bairro= "
-                + "cidade = "
-                + "estado = "
-                + "Where id =";
+        String query = "delete from endereco where id = ?";
+
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);

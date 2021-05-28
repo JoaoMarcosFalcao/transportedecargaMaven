@@ -45,13 +45,13 @@ public class ClienteDao {
                 clientes.add(cliente);
             }
         } catch (Exception e) {
-            System.out.println("Erro ao listar clientes" + e.getMessage());
+            System.out.println("Erro ao listar clientes!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return clientes;
     }
@@ -77,27 +77,27 @@ public class ClienteDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao inserir cliente" + e.getMessage());
+            System.out.println("Erro ao inserir cliente!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
 
     public boolean editarCliente(Cliente cliente) {
         boolean isSalvo = false;
-        String query = "UPDATE cliente"
-                + "SET = nome"
-                + "cpf = "
-                + "email = "
-                + "idTelefone = "
-                + "idEndereco = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.cliente "
+                + "SET = nome = ?,"
+                + "cpf = ?, "
+                + "email = ?, "
+                + "idTelefone = ?, "
+                + "idEndereco = ? "
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -106,20 +106,21 @@ public class ClienteDao {
             preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setInt(4, (int) cliente.getIdTelefone());
             preparedStatement.setInt(5, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(6,(int) cliente.getId());
 
             preparedStatement.executeUpdate();
             con.commit();
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar o cliente" + e.getMessage());
+            System.out.println("Erro ao editar o cliente!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -148,13 +149,13 @@ public class ClienteDao {
                 con.commit();
             }
         } catch (Exception e) {
-            System.out.println("Erro ao prcurar o cliente" + e.getMessage());
+            System.out.println("Erro ao procurar o cliente!" + e.getMessage());
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return clientes.get(0);
     }
@@ -162,13 +163,7 @@ public class ClienteDao {
 
     public boolean deletarCliente(int id) {
         boolean isSalvo = false;
-        String query = "delete from cliente where id = "
-                + "SET = nome"
-                + "cpf = "
-                + "email = "
-                + "idTelefone = "
-                + "idEndereco = "
-                + "Where id =";
+        String query = "delete from endereco where id = ?";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -180,14 +175,14 @@ public class ClienteDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o cliente" + e.getMessage());
+            System.out.println("Erro ao deletar o cliente!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }

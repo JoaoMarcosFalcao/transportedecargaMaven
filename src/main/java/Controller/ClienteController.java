@@ -38,8 +38,6 @@ public class ClienteController {
         System.out.println("Informe o ID do Endereco:");
         cliente.setIdEndereco(leia.nextInt());
 
-        cliente.setId(id_generator.getAndIncrement());
-        System.out.println("O ID do cliente registrado é: " + cliente.getId());
 
         clientes.add(cliente);
 
@@ -87,11 +85,12 @@ public class ClienteController {
 
     public void printarCliente(Cliente cliente) {
         System.out.println();
-        System.out.println("O Nome do Cliente é:" + cliente.getNome());
-        System.out.println("O Email do Cliente é" + cliente.getEmail());
-        System.out.println("O Telefone do Cliente é:" + cliente.getIdTelefone());
-        System.out.println("O Enderenço do Clietne é:" + cliente.getIdEndereco());
-        System.out.println("O CPF do Cliente é:" + cliente.getCpf());
+        System.out.println("O Nome do Cliente é: " + cliente.getNome());
+        System.out.println("O Email do Cliente é: " + cliente.getEmail());
+        System.out.println("O CPF do Cliente é: " + cliente.getCpf());
+        System.out.println("O Telefone do Cliente é: " + cliente.getIdTelefone());
+        System.out.println("O Enderenço do Clietne é: " + cliente.getIdEndereco());
+
         System.out.println();
     }
 
@@ -136,7 +135,7 @@ public class ClienteController {
 }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID do Cliente que deseja modificar? ");
         int id = input.nextInt();
         return id;
     }

@@ -40,7 +40,7 @@ public class TelefoneDao {
                 telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero"));
-               // telefone.setIdCliente(set.getInt("idCliente"));
+
 
                 telefones.add(telefone);
             }
@@ -90,18 +90,17 @@ public class TelefoneDao {
 
     public boolean editarTelefoneDosClientes(Telefone telefone) {
         boolean isSalvo = false;
-        String query = "UPDATE telefone"
-                + "SET = codigoArea"
-                + "ddd = "
-                + "numero = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.telefone "
+                + "SET = codigoArea = ?,"
+                + "ddd = ?,"
+                + "numero = ?"
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, telefone.getCodigoArea());
             preparedStatement.setString(2, telefone.getDDD());
             preparedStatement.setString(3, telefone.getNumero());
-          //  preparedStatement.setInt(4, (int) telefone.getIdCliente());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -136,7 +135,6 @@ public class TelefoneDao {
                 telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero do Telefone"));
-               // telefone.setIdCliente(set.getInt("idCliente"));
 
                 telefones.add(telefone);
 
@@ -157,11 +155,7 @@ public class TelefoneDao {
 
     public boolean deletarTelefoneDoCliente(int id) {
         boolean isSalvo = false;
-        String query = "delete from telefone where id = "
-                + "SET = codigoArea"
-                + "DDD = "
-                + "numero = "
-                + "Where id =";
+        String query = "delete from telefone where id = ?";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -173,14 +167,14 @@ public class TelefoneDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o telefone do clinte" + e.getMessage());
+            System.out.println("Erro ao deletar o telefone do cliente!" + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }
@@ -202,7 +196,6 @@ public class TelefoneDao {
                 telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero"));
-                telefone.setIdMotorista(set.getInt("idMotorista"));
 
                 telefones.add(telefone);
             }
@@ -221,8 +214,8 @@ public class TelefoneDao {
 
     public boolean salvarTelefoneDoMotorista(Telefone telefone) {
         boolean isSalvo = false;
-        String queryTelefone = "insert into telefone (codigoArea, ddd, numero, idMotorista)"
-                + "values(?,?,?,?);";
+        String queryTelefone = "insert into telefone (codigoArea, ddd, numero)"
+                + "values(?,?,?);";
 
         try {
             con.setAutoCommit(false);
@@ -230,7 +223,6 @@ public class TelefoneDao {
             preparedStatement.setString(1, telefone.getCodigoArea());
             preparedStatement.setString(2, telefone.getDDD());
             preparedStatement.setString(3, telefone.getNumero());
-            preparedStatement.setInt(4, (int) telefone.getIdMotorista());
 
             preparedStatement.execute();
 
@@ -252,11 +244,11 @@ public class TelefoneDao {
 
     public boolean editarTelefoneDoMotorista(Telefone telefone) {
         boolean isSalvo = false;
-        String query = "UPDATE telefone"
-                + "SET = codigoArea"
-                + "ddd = "
-                + "numero = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.telefone "
+                + "SET = codigoArea = ?,"
+                + "ddd = ?,"
+                + "numero = ?"
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -319,11 +311,8 @@ public class TelefoneDao {
 
     public boolean deletarTelefoneDoMotorista(int id) {
         boolean isSalvo = false;
-        String query = "delete from telefone where id = "
-                + "SET = codigoArea"
-                + "DDD = "
-                + "numoer = "
-                + "Where id =";
+        String query = "delete from telefone where id = ?";
+
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -335,14 +324,14 @@ public class TelefoneDao {
             isSalvo = true;
 
         } catch (Exception e) {
-            System.out.println("Erro ao deletar o telefone do motorista" + e.getMessage());
+            System.out.println("Erro ao deletar o telefone do motorista! " + e.getMessage());
             isSalvo = false;
         }
         try {
             con.close();
 
         } catch (Exception e) {
-            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            System.err.println("Erro ao fechar a conexão! " + e.getMessage());
         }
         return isSalvo;
     }

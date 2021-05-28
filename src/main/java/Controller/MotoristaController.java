@@ -43,9 +43,6 @@ public class MotoristaController {
 
         motorista.setValidadeCHN(LocalDate.of(anoValidade, mesValidade, diaValidade));
 
-        motorista.setId(id_generator.getAndIncrement());
-        System.out.println("O ID do endereco registrado é: " + motorista.getId());
-
         motoristas.add(motorista);
 
         return motorista;
@@ -110,7 +107,7 @@ public class MotoristaController {
         System.out.println("A CNH do motorista é:" + motorista.getCNH());
         System.out.println("O Telefone do Motorista é:" + motorista.getTelefone());
         System.out.println("O Enderenço do Motorista é:" + motorista.getEndereco());
-        System.out.println("A data de Vencimento da CNH do motorista é:" + motorista.getValidadeCHN());
+        System.out.println("A Data de Vencimento da CNH do Motorista é:" + motorista.getValidadeCHN());
         System.out.println();
 
     }
@@ -125,7 +122,7 @@ public class MotoristaController {
         Motorista motorista = preencher();
         motoristaDao = new MotoristaDao();
         boolean isSalvo = motoristaDao.salvarMotorista(motorista);
-        return isSalvo = false;
+        return isSalvo;
     }
 
     public boolean editarMotoristas() {
@@ -156,7 +153,7 @@ public class MotoristaController {
     }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID do Motorista que deseja modificar? ");
         int id = input.nextInt();
         return id;
     }

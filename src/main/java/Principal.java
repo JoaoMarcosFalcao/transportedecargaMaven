@@ -31,7 +31,6 @@ public class Principal {
 
             while (rodarPrograma) {
 
-
                 System.out.println("Escolha uma categoria:" +
                         "\n 1 para Telefone" +
                         "\n 2 para Endereço" +
@@ -41,6 +40,7 @@ public class Principal {
                         "\n 6 para Rota" +
                         "\n 7 para Veiculo" +
                         "\n 8 para Viagem");
+
                 int escolha = leia.nextInt();
 
                 if (escolha == 5) {
@@ -55,19 +55,10 @@ public class Principal {
                     if (cdCarga == 1) {
                         cargaNegocioController.salvarCarga();
                     } else if (cdCarga == 2) {
-                        int cg;
-                        System.out.println("Informe o ID da Carga que deseja editar:");
-                        cg = leia.nextInt();
                         cargaNegocioController.editarCargas();
                     } else if (cdCarga == 3) {
-                        int cg;
-                        System.out.println("Informe o ID da Carga que deseja listar:");
-                        cg = leia.nextInt();
                         cargaNegocioController.printAll(cargaNegocioController.listarCargas());
                     } else if (cdCarga == 4) {
-                        int cg;
-                        System.out.println("Informe o ID da Carga que deseja deletar:");
-                        cg = leia.nextInt();
                         cargaNegocioController.deletarCarga();
                     }
 
@@ -82,9 +73,6 @@ public class Principal {
                     if (cdCliente == 1) {
                         clienteController.salvarCliente();
                     } else if (cdCliente == 2) {
-                        int cl;
-                        System.out.println("Informe o ID do Cliente que2 deseja editar:");
-                        cl = leia.nextInt();
                         clienteController.editarClientes();
                     } else if (cdCliente == 3) {
                         clienteController.printAll(clienteController.listarClientes());
@@ -110,17 +98,21 @@ public class Principal {
                     }
                 } else if (escolha == 2) {
 
-                    //Código do Endereço do Cliente
+                    //Código do Endereço
 
                     System.out.println("Escolha uma das Opcões:" +
                             "\n 1 para Cadastrar o Endereço do Cliente:" +
                             "\n 2 para Editar o Endereço do Cliente:" +
                             "\n 3 para Listar os Endereços do Cliente:" +
                             "\n 4 para Deletar o Endereço do Cliente:" +
+                            "\n" +
                             "\n 5 para Cadastrar o Endereço do Motorista:" +
                             "\n 6 para Editar o Endereço do Motorista:" +
                             "\n 7 para Listar os Endereços do Motorista:" +
                             "\n 8 para Deletar o Endereço do Motorista:");
+
+                    //Endereço do Cliente
+
                     int cdEndereco = leia.nextInt();
                     if (cdEndereco == 1) {
                         enderecoController.salvarEnderecoDoCliente();
@@ -140,49 +132,44 @@ public class Principal {
                         } else if (cdEndereco == 7) {
                             enderecoController.printAll(enderecoController.listarEnderecosDosMotoristas());
                         } else if (cdEndereco == 8) {
-                            enderecoController.deletarEnderecoDoCliente();
+                            enderecoController.deletarEnderecoDoMotorista();
                     }
                 } else if (escolha == 1) {
+
                     //Código do Telefone
+
                     System.out.println("Escolha uma das Opcões:" +
                             "\n 1 para Cadastrar o Telefone do Cliente:" +
                             "\n 2 para Editar o Telefone do Cliente:" +
                             "\n 3 para Listar os Telefones dos Clientes:" +
                             "\n 4 para Deletar o Telefone do Cliente:" +
+                            "\n" +
                             "\n 5 para Cadastrar o Telefone do Motorista:" +
                             "\n 6 para Editar o Telefone do Motorista:" +
                             "\n 7 para Listar o5s Telefones dos Motorista:" +
                             "\n 8 para Deletar o Telefone do Motorista:");
+
+                    //Telefone do Cliente
+
                     int cdTelefone = leia.nextInt();
                     if (cdTelefone == 1) {
                         telefoneController.salvarTelefoneDoCliente();
                     } else if (cdTelefone == 2) {
-                        int tf;
-                        System.out.println("Informe o ID do Telefone do Cliente que deseja editar:");
-                        tf = leia.nextInt();
                         telefoneController.editarTelefoneDoCliente();
                     } else if (cdTelefone == 3) {
                         telefoneController.printAll(telefoneController.listarTelefonesDosClientes());
                     } else if (cdTelefone == 4) {
-                        int tf;
-                        System.out.println("Informe o ID do Telefone do Cliente que deseja deletar:");
-                        tf = leia.nextInt();
                         telefoneController.deletarTelefoneDoCliente();
 
-                    }else if (cdTelefone == 5) {
-                            telefoneController.salvarTelefoneDoMotorista();
+                    //Telefone do Motorista
 
+                    }else if (cdTelefone == 5) {
+                        telefoneController.salvarTelefoneDoMotorista();
                     } else if (cdTelefone == 6) {
-                        int tf;
-                        System.out.println("Informe o ID do Telefone do Motorista que deseja editar:");
-                        tf = leia.nextInt();
                         telefoneController.editarTelefoneDoMotorista();
                     } else if (cdTelefone == 7) {
                         telefoneController.printAll(telefoneController.listarTelefonesDosMotoristas());
                     } else if (cdTelefone == 8) {
-                        int tf;
-                        System.out.println("Informe o ID do Telefone do Motorista que deseja deletar:");
-                        tf = leia.nextInt();
                         telefoneController.deletarTelefoneDoMotorista();
                     }
 
@@ -197,19 +184,10 @@ public class Principal {
                     if (cdRota == 1) {
                         rotaNegocioController.salvarRota();
                     } else if (cdRota == 2) {
-                        int rt;
-                        System.out.println("Informe o ID da Rota que deseja editar:");
-                        rt = leia.nextInt();
                         rotaNegocioController.editarRotas();
                     } else if (cdRota == 3) {
-                        int rt;
-                        System.out.println("Informe o ID da Rota que deseja listar:");
-                        rt = leia.nextInt();
                         rotaNegocioController.printAll(rotaNegocioController.listarRotas());
                     } else if (cdRota == 4) {
-                        int rt;
-                        System.out.println("Informe o ID da Rota que deseja deletar:");
-                        rt = leia.nextInt();
                         rotaNegocioController.deletarRota();
                     }
                 } else if (escolha == 7) {
@@ -223,19 +201,10 @@ public class Principal {
                     if (cdVeiculo == 1) {
                         veiculoController.salvarVeiculo();
                     } else if (cdVeiculo == 2) {
-                        int vc;
-                        System.out.println("Informe o ID do Veiculo que deseja editar:");
-                        vc = leia.nextInt();
                         veiculoController.editarVeiculos();
                     } else if (cdVeiculo == 3) {
-                        int vc;
-                        System.out.println("Informe o ID do Veiculo que deseja listar:");
-                        vc = leia.nextInt();
                         veiculoController.printAll(veiculoController.listarVeiculos());
                     } else if (cdVeiculo == 4) {
-                        int vc;
-                        System.out.println("Informe o ID do Veiculo que deseja deletar:");
-                        vc = leia.nextInt();
                         veiculoController.deletarVeiculo();
                     }
                 } else if (escolha == 8) {
@@ -250,19 +219,10 @@ public class Principal {
                     if (cdViagem == 1) {
                         viagemController.salvarViagem();
                     } else if (cdViagem == 2) {
-                        int vj;
-                        System.out.println("Informe o ID da Viagem que deseja editar:");
-                        vj = leia.nextInt();
                         viagemController.editarViagems();
                     } else if (cdViagem == 3) {
-                        int vj;
-                        System.out.println("Informe o ID da Viagem que deseja listar:");
-                        vj = leia.nextInt();
                         viagemController.printAll(viagemController.listarViagems());
                     } else if (cdViagem == 4) {
-                        int vj;
-                        System.out.println("Informe o ID da Viagem que deseja deletar:");
-                        vj = leia.nextInt();
                         viagemController.deletarViagem();
                     } else if (cdViagem == 5) {
                         System.out.println("Informe o ID da Carga:");
