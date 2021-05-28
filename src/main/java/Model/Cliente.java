@@ -7,7 +7,6 @@ public class Cliente {
     private long id;
     private String nome;
     private String email;
-    private Telefone telefone;
     private String Cpf;
     private int idTelefone;
     private int idEndereco;
@@ -36,16 +35,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public Telefone getTelefone() {
-        return telefone;
+    public String getCpf() {
+        return Cpf;
     }
 
-    public int getIdEndereco() {
-        return idEndereco;
-    }
-
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
+    public void setCpf(String cpf) {
+        Cpf = cpf;
     }
 
     public int getIdTelefone() {
@@ -56,12 +51,12 @@ public class Cliente {
         this.idTelefone = idTelefone;
     }
 
-    public String getCpf() {
-        return Cpf;
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
-    public void setCpf(String cpf) {
-        Cpf = cpf;
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public Cliente() {

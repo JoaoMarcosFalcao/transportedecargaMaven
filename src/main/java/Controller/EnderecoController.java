@@ -21,22 +21,19 @@ public class EnderecoController {
         endereco.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe o Nome da Rua:");
-        endereco.setRua(leia.next());
+        endereco.setRua(leia.nextLine());
 
         System.out.println("Informe o Número da Casa:");
-        endereco.setNumero(leia.next());
+        endereco.setNumero(leia.nextLine());
 
         System.out.println("Informe o Nome do Bairro:");
-        endereco.setBairro(leia.next());
+        endereco.setBairro(leia.nextLine());
 
         System.out.println("Informe o Nome da Cidade:");
-        endereco.setCidade(leia.next());
+        endereco.setCidade(leia.nextLine());
 
         System.out.println("Informe o Nome do Estado:");
-        endereco.setEstado(leia.next());
-
-        endereco.setId(id_generator.getAndIncrement());
-        System.out.println("O ID do endereco registrado é: " + endereco.getId());
+        endereco.setEstado(leia.nextLine());
 
         enderecos.add(endereco);
 
@@ -159,7 +156,7 @@ public class EnderecoController {
     }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID do Endereco: ");
         int id = input.nextInt();
         return id;
     }

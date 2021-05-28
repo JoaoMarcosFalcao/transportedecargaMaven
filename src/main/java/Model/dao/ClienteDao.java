@@ -39,8 +39,8 @@ public class ClienteDao {
                 cliente.setNome(set.getString("nome"));
                 cliente.setCpf(set.getString("cpf"));
                 cliente.setEmail(set.getString("email"));
-                cliente.setIdTelefone(set.getInt("IDTelefone"));
-                cliente.setIdEndereco(set.getInt("IDEndereco"));
+                cliente.setIdTelefone(set.getInt("idTelefone"));
+                cliente.setIdEndereco(set.getInt("idEndereco"));
 
                 clientes.add(cliente);
             }
@@ -67,8 +67,8 @@ public class ClienteDao {
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(3, cliente.getCpf());
             preparedStatement.setString(2, cliente.getEmail());
-            preparedStatement.setInt(4, (int) cliente.getIdTelefone());
-            preparedStatement.setInt(5, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(4, cliente.getIdTelefone());
+            preparedStatement.setInt(5, cliente.getIdTelefone());
 
 
             preparedStatement.execute();

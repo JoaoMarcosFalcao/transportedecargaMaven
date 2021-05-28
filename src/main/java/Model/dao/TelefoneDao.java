@@ -1,5 +1,6 @@
 package Model.dao;
 
+import Controller.TelefoneController;
 import Model.Cliente;
 import Model.Telefone;
 import Model.dao.utilDao.ConnectionFactory;
@@ -13,6 +14,8 @@ import java.util.List;
 
 public class TelefoneDao {
 
+    private Telefone telefone;
+    TelefoneController telefoneController = new TelefoneController();
     Connection con;
     ConnectionFactory connectionFactory;
     private Statement statement;
@@ -34,7 +37,7 @@ public class TelefoneDao {
             while (set.next()) {
                 Telefone telefone = new Telefone();
                 telefone.setId(set.getInt("id"));
-                telefone.setCodigoArea(set.getString("CodigodeArea"));
+                telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero"));
                // telefone.setIdCliente(set.getInt("idCliente"));
@@ -57,7 +60,7 @@ public class TelefoneDao {
     public boolean salvarTelefoneDosClientes(Telefone telefone) {
         boolean isSalvo = false;
         String queryTelefone = "insert into telefone (codigoArea, ddd, numero)"
-                + "values(?,?,?,?);";
+                + "values(?,?,?);";
 
         try {
             con.setAutoCommit(false);
@@ -130,7 +133,7 @@ public class TelefoneDao {
             while (set.next()) {
                 Telefone telefone = new Telefone();
                 telefone.setId(set.getInt("id"));
-                telefone.setCodigoArea(set.getString("Codigo de Area"));
+                telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero do Telefone"));
                // telefone.setIdCliente(set.getInt("idCliente"));
@@ -155,9 +158,9 @@ public class TelefoneDao {
     public boolean deletarTelefoneDoCliente(int id) {
         boolean isSalvo = false;
         String query = "delete from telefone where id = "
-                + "SET = Codigo de Area"
+                + "SET = codigoArea"
                 + "DDD = "
-                + "numoer = "
+                + "numero = "
                 + "Where id =";
         try {
             con.setAutoCommit(false);
@@ -196,7 +199,7 @@ public class TelefoneDao {
             while (set.next()) {
                 Telefone telefone = new Telefone();
                 telefone.setId(set.getInt("id"));
-                telefone.setCodigoArea(set.getString("Codigo de Area"));
+                telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero"));
                 telefone.setIdMotorista(set.getInt("idMotorista"));
@@ -292,7 +295,7 @@ public class TelefoneDao {
             while (set.next()) {
                 Telefone telefone = new Telefone();
                 telefone.setId(set.getInt("id"));
-                telefone.setCodigoArea(set.getString("Codigo de Area"));
+                telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero do Telefone"));
                 telefone.setIdMotorista(set.getInt("idMotorista"));
@@ -317,7 +320,7 @@ public class TelefoneDao {
     public boolean deletarTelefoneDoMotorista(int id) {
         boolean isSalvo = false;
         String query = "delete from telefone where id = "
-                + "SET = Codigo de Area"
+                + "SET = codigoArea"
                 + "DDD = "
                 + "numoer = "
                 + "Where id =";

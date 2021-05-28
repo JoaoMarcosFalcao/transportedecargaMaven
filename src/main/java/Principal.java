@@ -87,14 +87,8 @@ public class Principal {
                         cl = leia.nextInt();
                         clienteController.editarClientes();
                     } else if (cdCliente == 3) {
-                        int cl;
-                        System.out.println("Informe o ID do Cliente que deseja listar:");
-                        cl = leia.nextInt();
                         clienteController.printAll(clienteController.listarClientes());
                     } else if (cdCliente == 4) {
-                        int cl;
-                        System.out.println("Informe o ID do Cliente que deseja deletar:");
-                        cl = leia.nextInt();
                         clienteController.deletarCliente();
                     }
                 } else if (escolha == 4) {
@@ -108,23 +102,16 @@ public class Principal {
                     if (cdMotorista == 1) {
                         motoristaController.salvarMotorista();
                     } else if (cdMotorista == 2) {
-                        int mt;
-                        System.out.println("Informe o ID do Motorista que deseja editar:");
-                        mt = leia.nextInt();
                         motoristaController.editarMotoristas();
                     } else if (cdMotorista == 3) {
-                        int mt;
-                        System.out.println("Informe o ID do Motorista que deseja listar:");
-                        mt = leia.nextInt();
                         motoristaController.printAll(motoristaController.listarMotoristas());
                     } else if (cdMotorista == 4) {
-                        int mt;
-                        System.out.println("Informe o ID do Motorista que deseja deletar:");
-                        mt = leia.nextInt();
                         motoristaController.deletarMotorista();
                     }
                 } else if (escolha == 2) {
-                    //Código do Endereço
+
+                    //Código do Endereço do Cliente
+
                     System.out.println("Escolha uma das Opcões:" +
                             "\n 1 para Cadastrar o Endereço do Cliente:" +
                             "\n 2 para Editar o Endereço do Cliente:" +
@@ -136,39 +123,23 @@ public class Principal {
                             "\n 8 para Deletar o Endereço do Motorista:");
                     int cdEndereco = leia.nextInt();
                     if (cdEndereco == 1) {
-                        enderecoController.preencher();
+                        enderecoController.salvarEnderecoDoCliente();
                     } else if (cdEndereco == 2) {
-                        int ed;
-                        System.out.println("Informe o ID do Endereço do Cliente que deseja editar:");
-                        ed = leia.nextInt();
                         enderecoController.editarEnderecoDoCliente();
                     } else if (cdEndereco == 3) {
-                        int ed;
-                        System.out.println("Informe o ID do Endereço do Cliente que deseja listar:");
-                        ed = leia.nextInt();
                         enderecoController.printAll(enderecoController.listarEnderecosDosClientes());
                    } else if (cdEndereco == 4) {
-                        int ed;
-                        System.out.println("Informe o ID do Endereço do Cliente que deseja deletar:");
-                        ed = leia.nextInt();
                         enderecoController.deletarEnderecoDoCliente();
+
+                    //Endereço do Motorista
 
                     } else if (cdEndereco == 5) {
                             enderecoController.salvarEnderecoDoMotorista();
                     } else if (cdEndereco == 6) {
-                            int ed;
-                            System.out.println("Informe o ID do Endereço do Motorista que deseja editar:");
-                            ed = leia.nextInt();
                             enderecoController.editarEnderecoDoMotorista();
                         } else if (cdEndereco == 7) {
-                            int ed;
-                            System.out.println("Informe o ID do Endereço do Motorista que deseja listar:");
-                            ed = leia.nextInt();
                             enderecoController.printAll(enderecoController.listarEnderecosDosMotoristas());
                         } else if (cdEndereco == 8) {
-                            int ed;
-                            System.out.println("Informe o ID do Endereço do Motorista que deseja deletar:");
-                            ed = leia.nextInt();
                             enderecoController.deletarEnderecoDoCliente();
                     }
                 } else if (escolha == 1) {
@@ -191,9 +162,6 @@ public class Principal {
                         tf = leia.nextInt();
                         telefoneController.editarTelefoneDoCliente();
                     } else if (cdTelefone == 3) {
-                        int tf;
-                        System.out.println("Informe o ID do Telefone do Cliente que deseja listar:");
-                        tf = leia.nextInt();
                         telefoneController.printAll(telefoneController.listarTelefonesDosClientes());
                     } else if (cdTelefone == 4) {
                         int tf;
@@ -210,9 +178,6 @@ public class Principal {
                         tf = leia.nextInt();
                         telefoneController.editarTelefoneDoMotorista();
                     } else if (cdTelefone == 7) {
-                        int tf;
-                        System.out.println("Informe o ID do Telefone do Motorista que deseja listar:");
-                        tf = leia.nextInt();
                         telefoneController.printAll(telefoneController.listarTelefonesDosMotoristas());
                     } else if (cdTelefone == 8) {
                         int tf;
@@ -309,7 +274,7 @@ public class Principal {
                         System.out.println("Informe o ID da Viagem:");
                         int idViagem = leia.nextInt();
 
-                       // viagemController.calcularFretePeso(viagemController.listarViagems(), cargaNegocioController.listarCargas(), rotaNegocioController.listarRotas(), veiculoController.listarVeiculos(idVeiculo));
+                       viagemController.calcularFretePeso(viagemController.procurarPorId(idViagem), cargaNegocioController.procurarPorId(idCarga),rotaNegocioController.procurarPorId(idRota), veiculoController.procurarPorId(idVeiculo));
 
                     }
                     System.out.println("Deseja encerrar o Sistema? 1-Sim, 2-Nao");

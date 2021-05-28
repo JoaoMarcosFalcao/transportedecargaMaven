@@ -28,7 +28,7 @@ public class TelefoneController {
 
         telefone.setId(id_generator.getAndIncrement());
 
-        System.out.println("Informe o código de área: ");
+        System.out.println("Informe o Código de área: ");
         telefone.setCodigoArea(leia.next());
 
         System.out.println("Informe o DDD: ");
@@ -36,7 +36,6 @@ public class TelefoneController {
 
         System.out.println("Informe o número do telefone: ");
         telefone.setNumero(leia.next());
-
 
         telefone.setId(id_generator.getAndIncrement());
         System.out.println("O ID do telefone registrado é: " + telefone.getId());
@@ -97,19 +96,19 @@ public class TelefoneController {
     }
     public ArrayList<Telefone> listarTelefonesDosClientes() {
         telefoneDao = new TelefoneDao();
-        ArrayList<Telefone> motoristas = telefoneDao.listarTelefonesDosClientes();
+        ArrayList<Telefone> telefones = telefoneDao.listarTelefonesDosClientes();
         return telefones;
     }
     public ArrayList<Telefone> listarTelefonesDosMotoristas() {
         telefoneDao = new TelefoneDao();
-        ArrayList<Telefone> motoristas = telefoneDao.listarTelefonesDosMotoristas();
+        ArrayList<Telefone> telefones = telefoneDao.listarTelefonesDosMotoristas();
         return telefones;
     }
     public void printarTelefones (Telefone telefone) {
         System.out.println();
-        System.out.println("O Numero do Telefone é:" + telefone.getNumero());
         System.out.println("O Código de Area é:" + telefone.getCodigoArea());
         System.out.println("O DDD do Telefone é:" + telefone.getDDD());
+        System.out.println("O Numero do Telefone é:" + telefone.getNumero());
         System.out.println();
     }
 

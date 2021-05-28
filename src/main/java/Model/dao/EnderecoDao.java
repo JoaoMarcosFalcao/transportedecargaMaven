@@ -36,11 +36,10 @@ public class EnderecoDao {
                 Endereco endereco = new Endereco();
                 endereco.setId(set.getInt("id"));
                 endereco.setRua(set.getString("Rua"));
-                endereco.setNumero(set.getString("Numero da Casa"));
+                endereco.setNumero(set.getString("Numero"));
                 endereco.setBairro(set.getString("Bairro"));
                 endereco.setCidade(set.getString("Cidade"));
                 endereco.setEstado(set.getString("Estado"));
-                endereco.setIdCliente(set.getInt("idCliente"));
 
                 enderecos.add(endereco);
             }
@@ -58,8 +57,8 @@ public class EnderecoDao {
 
     public boolean salvarEnderecoDoCliente(Endereco endereco) {
         boolean isSalvo = false;
-        String queryEndereco = "insert into endereco (rua, numero, bairro, cidade, estado, idCliente)"
-                + "values(?,?,?,?,?,?);";
+        String queryEndereco = "insert into endereco (rua, numero, bairro, cidade, estado)"
+                + "values(?,?,?,?,?);";
 
         try {
             con.setAutoCommit(false);
@@ -69,7 +68,6 @@ public class EnderecoDao {
             preparedStatement.setString(3, endereco.getBairro());
             preparedStatement.setString(4, endereco.getCidade());
             preparedStatement.setString(5, endereco.getEstado());
-            preparedStatement.setInt(6, (int) endereco.getIdCliente());
 
             preparedStatement.execute();
 
@@ -91,13 +89,13 @@ public class EnderecoDao {
 
     public boolean editarEnderecoDoCliente(Endereco endereco) {
         boolean isSalvo = false;
-        String query = "UPDATE endereco"
-                + "SET = rua"
-                + "numero = "
-                + "bairro = "
-                + "cidade = "
-                + "estado = "
-                + "Where id =";
+        String query = "UPDATE db_transporte.endereco "
+                + "SET rua = ?,"
+                + "numero = ?,"
+                + "bairro = ?,"
+                + "cidade = ?,"
+                + "estado = ? "
+                + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -106,7 +104,7 @@ public class EnderecoDao {
             preparedStatement.setString(3, endereco.getBairro());
             preparedStatement.setString(4, endereco.getCidade());
             preparedStatement.setString(5, endereco.getEstado());
-            preparedStatement.setInt(6, (int) endereco.getIdCliente());
+            preparedStatement.setInt(6,(int) endereco.getId());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -139,11 +137,10 @@ public class EnderecoDao {
                 Endereco endereco = new Endereco();
                 endereco.setId(set.getInt("ID"));
                 endereco.setRua(set.getString("Rua"));
-                endereco.setNumero(set.getString("Numero da Casa"));
+                endereco.setNumero(set.getString("Numero"));
                 endereco.setBairro(set.getString("Bairro"));
                 endereco.setCidade(set.getString("Cidade"));
                 endereco.setEstado(set.getString("Estado"));
-                endereco.setIdCliente(set.getInt("idCliente"));
 
                 enderecos.add(endereco);
 
@@ -164,13 +161,8 @@ public class EnderecoDao {
 
     public boolean deletarEnderecoDoCliente(int id) {
         boolean isSalvo = false;
-        String query = "delete from endereco where id = "
-                + "SET = rua"
-                + "numero = "
-                + "bairro= "
-                + "cidade = "
-                + "estado = "
-                + "Where id =";
+        String query = "delete from endereco where id = ?";
+
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
@@ -214,11 +206,10 @@ public class EnderecoDao {
                 Endereco endereco = new Endereco();
                 endereco.setId(set.getInt("id"));
                 endereco.setRua(set.getString("Rua"));
-                endereco.setNumero(set.getString("Numero da Casa"));
+                endereco.setNumero(set.getString("Numero"));
                 endereco.setBairro(set.getString("Bairro"));
                 endereco.setCidade(set.getString("Cidade"));
                 endereco.setEstado(set.getString("Estado"));
-                endereco.setIdMotorista(set.getInt("idMotorista"));
 
                 enderecos.add(endereco);
             }
@@ -236,8 +227,8 @@ public class EnderecoDao {
 
     public boolean salvarEnderecoDoMotorista(Endereco endereco) {
         boolean isSalvo = false;
-        String queryEndereco = "insert into endereco (rua, numero, bairro, cidade, estado, idMotorista)"
-                + "values(?,?,?,?,?,?);";
+        String queryEndereco = "insert into endereco (rua, numero, bairro, cidade, estado)"
+                + "values(?,?,?,?,?);";
 
         try {
             con.setAutoCommit(false);
@@ -247,7 +238,6 @@ public class EnderecoDao {
             preparedStatement.setString(3, endereco.getBairro());
             preparedStatement.setString(4, endereco.getCidade());
             preparedStatement.setString(5, endereco.getEstado());
-            preparedStatement.setInt(6, (int) endereco.getIdMotorista());
 
             preparedStatement.execute();
 
@@ -284,7 +274,7 @@ public class EnderecoDao {
             preparedStatement.setString(3, endereco.getBairro());
             preparedStatement.setString(4, endereco.getCidade());
             preparedStatement.setString(5, endereco.getEstado());
-            preparedStatement.setInt(6, (int) endereco.getIdMotorista());
+
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -317,11 +307,10 @@ public class EnderecoDao {
                 Endereco endereco = new Endereco();
                 endereco.setId(set.getInt("ID"));
                 endereco.setRua(set.getString("Rua"));
-                endereco.setNumero(set.getString("Numero da Casa"));
+                endereco.setNumero(set.getString("Numero"));
                 endereco.setBairro(set.getString("Bairro"));
                 endereco.setCidade(set.getString("Cidade"));
                 endereco.setEstado(set.getString("Estado"));
-                endereco.setIdMotorista(set.getInt("idMotorista"));
 
                 enderecos.add(endereco);
 
