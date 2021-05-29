@@ -34,15 +34,15 @@ public class ViagemDao {
             while (set.next()) {
                 Viagem viagem = new Viagem();
                 viagem.setId(set.getInt("id"));
-                viagem.setHoraPartida(set.getString("Hora da Partida"));
-                viagem.setHoraChegada(set.getString("Hora da Chegada"));
-                viagem.setDataSaida(convertToLocalDateViaSqlDate(set.getDate("Dia da Partida")));
-                viagem.setDataChegada(convertToLocalDateViaSqlDate(set.getDate("Dia da Chegada")));
-                viagem.setIdCarga(set.getInt("Id da Carga"));
-                viagem.setIdVeiculo(set.getInt("Id do Veiculo"));
-                viagem.setIdMotorista(set.getInt("Id do Motorista"));
-                viagem.setIdRota(set.getInt("Id da Rota"));
-                viagem.setFrete(set.getInt("Total do Frete"));
+                viagem.setHoraPartida(set.getString("HoraPartida"));
+                viagem.setHoraChegada(set.getString("HoraChegada"));
+                viagem.setDataSaida(convertToLocalDateViaSqlDate(set.getDate("DataSaida")));
+                viagem.setDataChegada(convertToLocalDateViaSqlDate(set.getDate("DataChegada")));
+                viagem.setIdCarga(set.getInt("IdCarga"));
+                viagem.setIdVeiculo(set.getInt("IdVeiculo"));
+                viagem.setIdMotorista(set.getInt("IdMotorista"));
+                viagem.setIdRota(set.getInt("IdRota"));
+                viagem.setFrete(set.getInt("Frete"));
 
                 viagems.add(viagem);
             }
@@ -60,7 +60,7 @@ public class ViagemDao {
 
     public boolean salvarViagem(Viagem viagem) {
         boolean isSalvo = false;
-        String queryViagem = "insert into viagem (horaSaida, horaChegada, dataPartida, dataChegada, idCarga, idVeiculo, idMotorista, idRota, frete)"
+        String queryViagem = "insert into viagem (horaPartida, horaChegada, dataSaida, dataChegada, carga, veiculo, motorista, rota, frete)"
                 + "values(?,?,?,?,?,?,?,?,?);";
 
         try {
@@ -101,10 +101,10 @@ public class ViagemDao {
                 + "horaChegada = ?, "
                 + "dataSaida = ?, "
                 + "dataChegada = ?, "
-                + "idCarga = ?, "
-                + "idVeiculo = ?, "
-                + "idMotorista = ?, "
-                + "idRota = ?, "
+                + "carga = ?, "
+                + "veiculo = ?, "
+                + "motorista = ?, "
+                + "rota = ?, "
                 + "frete = ? "
                 + "Where id = ?;";
         try {
@@ -150,15 +150,15 @@ public class ViagemDao {
             while (set.next()) {
                 Viagem viagem = new Viagem();
                 viagem.setId(set.getInt("id"));
-                viagem.setHoraPartida(set.getString("Hora da Partida"));
-                viagem.setHoraChegada(set.getString("Hora da Chegada"));
-                viagem.setDataSaida(convertToLocalDateViaSqlDate(set.getDate("Dia da Partida")));
-                viagem.setDataChegada(convertToLocalDateViaSqlDate(set.getDate("Dia da Chegada")));
-                viagem.setIdCarga(set.getInt("Id da Carga"));
-                viagem.setIdVeiculo(set.getInt("Id do Veiculo"));
-                viagem.setIdMotorista(set.getInt("Id do Motorista"));
-                viagem.setIdRota(set.getInt("Id da Rota"));
-                viagem.setFrete(set.getInt("Total do Frete"));
+                viagem.setHoraPartida(set.getString("horaPartida"));
+                viagem.setHoraChegada(set.getString("horaChegada"));
+                viagem.setDataSaida(convertToLocalDateViaSqlDate(set.getDate("dataSaida")));
+                viagem.setDataChegada(convertToLocalDateViaSqlDate(set.getDate("dataChegada")));
+                viagem.setIdCarga(set.getInt("Idarga"));
+                viagem.setIdVeiculo(set.getInt("Idveiculo"));
+                viagem.setIdMotorista(set.getInt("Idmotorista"));
+                viagem.setIdRota(set.getInt("Idrota"));
+                viagem.setFrete(set.getInt("Frete"));
 
                 viagems.add(viagem);
 

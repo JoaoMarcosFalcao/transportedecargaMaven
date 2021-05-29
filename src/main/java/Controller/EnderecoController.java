@@ -160,4 +160,10 @@ public class EnderecoController {
         int id = input.nextInt();
         return id;
     }
+
+    public boolean deletarEnderecoDoCliente(int id) {
+        enderecoDao = new EnderecoDao();
+        boolean isSalvo = true;
+        return isSalvo;
+    }
 }

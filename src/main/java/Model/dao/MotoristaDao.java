@@ -36,9 +36,11 @@ public class MotoristaDao {
                 Motorista motorista = new Motorista();
                 motorista.setId(set.getInt("id"));
                 motorista.setNome(set.getString("nome"));
-                motorista.setEmail(set.getString("Email"));
-                motorista.setCNH(set.getString("CHN"));
-                motorista.setValidadeCHN(convertToLocalDateViaSqlDate(set.getDate("Vaidade da CNH")));
+                motorista.setEmail(set.getString("email"));
+                motorista.setIdTelefone(set.getInt("idTelefone"));
+                motorista.setIdEndereco(set.getInt("idEndereco"));
+                motorista.setCNH(set.getString("cnh"));
+                motorista.setValidadeCHN(convertToLocalDateViaSqlDate(set.getDate("validadeCnh")));
 
                 motoristas.add(motorista);
             }
@@ -56,16 +58,18 @@ public class MotoristaDao {
 
     public boolean salvarMotorista(Motorista motorista) {
         boolean isSalvo = false;
-        String queryMotorista = "insert into motorista (nome, email, cnh, validadeCnh)"
-                + "values(?,?,?,?);";
+        String queryMotorista = "insert into motorista (nome, email, idTelefone, idEndereco, cnh, validadeCnh)"
+                + "values(?,?,?,?,?,?);";
 
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(queryMotorista);
             preparedStatement.setString(1, motorista.getNome());
             preparedStatement.setString(2, motorista.getEmail());
-            preparedStatement.setString(3, motorista.getCNH());
-            preparedStatement.setDate(4, java.sql.Date.valueOf(motorista.getValidadeCHN()));
+            preparedStatement.setInt(3,(int) motorista.getIdTelefone());
+            preparedStatement.setInt(4, (int) motorista.getIdEndereco());
+            preparedStatement.setString(5, motorista.getCNH());
+            preparedStatement.setDate(6, java.sql.Date.valueOf(motorista.getValidadeCHN()));
 
             preparedStatement.execute();
 
@@ -90,16 +94,20 @@ public class MotoristaDao {
         String query = "UPDATE db_transporte.motorista "
                 + "SET = nome = ?,"
                 + "email = ?,"
+                + "idTelefone = ?,"
+                + "idEndereco = ?,"
                 + "cnh = ?,"
-                + "validadeCHN = ?"
+                + "validadeCnh = ?"
                 + "Where id = ?;";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, motorista.getNome());
             preparedStatement.setString(2, motorista.getEmail());
-            preparedStatement.setString(3, motorista.getCNH());
-            preparedStatement.setDate(4, java.sql.Date.valueOf(motorista.getValidadeCHN()));
+            preparedStatement.setInt(3,(int) motorista.getIdTelefone());
+            preparedStatement.setInt(4, (int) motorista.getIdEndereco());
+            preparedStatement.setString(5, motorista.getCNH());
+            preparedStatement.setDate(6, java.sql.Date.valueOf(motorista.getValidadeCHN()));
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -132,9 +140,11 @@ public class MotoristaDao {
                 Motorista motorista = new Motorista();
                 motorista.setId(set.getInt("id"));
                 motorista.setNome(set.getString("nome"));
-                motorista.setEmail(set.getString("Email"));
-                motorista.setCNH(set.getString("CHN"));
-                motorista.setValidadeCHN(convertToLocalDateViaSqlDate(set.getDate("Vaidade da CNH")));
+                motorista.setEmail(set.getString("email"));
+                motorista.setIdTelefone(set.getInt("idTelefone"));
+                motorista.setIdEndereco(set.getInt("idEndereco"));
+                motorista.setCNH(set.getString("cnh"));
+                motorista.setValidadeCHN(convertToLocalDateViaSqlDate(set.getDate("validadeCnh")));
 
                 motoristas.add(motorista);
 

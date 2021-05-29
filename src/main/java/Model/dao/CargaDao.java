@@ -35,10 +35,10 @@ public class CargaDao {
                 carga.setId(set.getInt("id"));
                 carga.setPeso(set.getDouble("Peso"));
                 carga.setAltura(set.getDouble("Altura"));
-                carga.setComprimento(set.getDouble("Comprimetno"));
+                carga.setComprimento(set.getDouble("Comprimento"));
                 carga.setLargura(set.getDouble("Largura"));
-                carga.setPesoOcupada(set.getDouble("Peso Cubado"));
-                carga.setTipoCarga(TipoCarga.valueOf(set.getString("Tipo de Carga")));
+                carga.setPesoOcupada(set.getDouble("pesoOcupado"));
+                carga.setTipoCarga(TipoCarga.valueOf(set.getString("TipoCarga")));
 
                 cargas.add(carga);
             }
@@ -140,10 +140,10 @@ public class CargaDao {
                 carga.setId(set.getInt("id"));
                 carga.setPeso(set.getDouble("Peso"));
                 carga.setAltura(set.getDouble("Altura"));
-                carga.setComprimento(set.getDouble("Comprimetno"));
+                carga.setComprimento(set.getDouble("Comprimento"));
                 carga.setLargura(set.getDouble("Largura"));
-                carga.setPesoOcupada(set.getDouble("Peso Cubado"));
-                carga.setTipoCarga(TipoCarga.valueOf(set.getString("Tipo de Carga")));
+                carga.setPesoOcupada(set.getDouble("pesoOcupado"));
+                carga.setTipoCarga(TipoCarga.valueOf(set.getString("TipoCarga")));
 
                 cargas.add(carga);
 

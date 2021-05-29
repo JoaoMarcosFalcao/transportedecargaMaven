@@ -37,7 +37,7 @@ public class VeiculoDao {
                 veiculo.setAno(set.getDouble("Ano"));
                 veiculo.setPlaca(set.getString("Placa"));
                 veiculo.setRENAVAM(set.getString("RENAVAM"));
-                veiculo.setCapacidade(set.getDouble("Capacidade Maxima"));
+                veiculo.setCapacidade(set.getDouble("Capacidade"));
 
                 veiculos.add(veiculo);
             }
@@ -141,7 +141,7 @@ public class VeiculoDao {
                 veiculo.setAno(set.getDouble("Ano"));
                 veiculo.setPlaca(set.getString("Placa"));
                 veiculo.setRENAVAM(set.getString("RENAVAM"));
-                veiculo.setCapacidade(set.getDouble("Capacidade Maxima"));
+                veiculo.setCapacidade(set.getDouble("Capacidade"));
 
                 veiculos.add(veiculo);
 

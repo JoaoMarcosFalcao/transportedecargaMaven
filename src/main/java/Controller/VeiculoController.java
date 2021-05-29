@@ -25,10 +25,10 @@ public class VeiculoController {
         veiculo.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe o Modelo do Veiculo:");
-        veiculo.setModelo(leia.next());
+        veiculo.setModelo(leia.nextLine());
 
         System.out.println("Informe a Marca do Veiculo:");
-        veiculo.setMarca(leia.next());
+        veiculo.setMarca(leia.nextLine());
 
         System.out.println("Informe o Ano do Veiculo:");
         veiculo.setAno(leia.nextDouble());
@@ -41,9 +41,6 @@ public class VeiculoController {
 
         System.out.println("Informe a Capacidade do Veiculo:");
         veiculo.setCapacidade(leia.nextDouble());
-
-        veiculo.setId(id_generator.getAndIncrement());
-        System.out.println("O ID do veiculo registrado é: " + veiculo.getId());
 
         veiculos.add(veiculo);
         
@@ -158,6 +155,12 @@ public class VeiculoController {
         System.out.println("Qual o ID do Veiculo que deseja modificar? ");
         int id = input.nextInt();
         return id;
+    }
+
+    public boolean deletarVeiculo(int id) {
+        veiculoDao = new VeiculoDao();
+        boolean isSalvo = true;
+        return isSalvo;
     }
 }
 

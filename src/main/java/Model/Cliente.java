@@ -10,6 +10,7 @@ public class Cliente {
     private String Cpf;
     private int idTelefone;
     private int idEndereco;
+    private List<Telefone> telefones;
 
     public long getId() {
         return id;
@@ -57,6 +58,14 @@ public class Cliente {
 
     public void setIdEndereco(int idEndereco) {
         this.idEndereco = idEndereco;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
     public Cliente() {

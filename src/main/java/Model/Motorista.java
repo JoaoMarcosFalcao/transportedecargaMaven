@@ -7,8 +7,8 @@ public class Motorista {
     private long id;
     private String nome;
     private String email;
-    private Telefone telefone;
-    private Endereco endereco;
+    private int idTelefone;
+    private int idEndereco;
     private String CNH;
     private LocalDate validadeCHN;
 
@@ -36,21 +36,22 @@ public class Motorista {
         this.email = email;
     }
 
-    public Telefone getTelefone() {
-        return telefone;
+    public int getIdTelefone() {
+        return idTelefone;
     }
 
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
+    public void setIdTelefone(int idTelefone) {
+        this.idTelefone = idTelefone;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
+
 
     public Motorista() {
 
@@ -71,5 +72,8 @@ public class Motorista {
 
     public void setValidadeCHN(LocalDate validadeCHN) {
         this.validadeCHN = validadeCHN;
+    }
+
+    public void setValidadeCHN(int i, int i1, int i2) {
     }
 }

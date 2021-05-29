@@ -21,24 +21,26 @@ public class RotaNegocioController {
         rota.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe a Cidade de Saida:");
-        rota.setCidadeSaida(leia.next());
+        rota.setCidadeSaida(leia.nextLine());
 
         System.out.println("Informe a Cidade de Chegada:");
-        rota.setCidadeChegada(leia.next());
+        rota.setCidadeChegada(leia.nextLine());
 
         System.out.println("Informe o a Distancia");
         rota.setDistancia(leia.nextDouble());
 
-        int cp = 1;
-        while (cp == 1) {
-            System.out.println("Qual cidade você quer cadastrar");
-            rota.setCidadeParadas(leia.next());
+        String cp = "s";
+        while (cp == "s") {
+            System.out.println("Qual cidades a rota vai passar");
+            rota.setCidadeParadas(leia.nextLine());
 
-            System.out.println("Quer cadastar uma nova cidade! Digite 1 para sim");
-            cp = leia.nextInt();
+            System.out.println("Quer cadastar uma nova cidade! Digite S para continuar");
+            cp = leia.next();
+
+
+            rota.setCidadeParadas(cp);
+
             rotas.add(rota);
-
-
         }
         return rota;
 
@@ -101,7 +103,7 @@ public class RotaNegocioController {
         System.out.println("A Cidade de Saida é:" + rota.getCidadeSaida());
         System.out.println("A Cidade Final é:" + rota.getCidadeChegada());
         System.out.println("A Distancia entre as cidades é:" + rota.getDistancia());
-        System.out.println("As Cidades pela qual a rota passa são:" + rota.getCidadesRotas());
+        System.out.println("As Cidades pela qual a rota passa são:" + rota.getCidadeParadas());
         System.out.println();
     }
 

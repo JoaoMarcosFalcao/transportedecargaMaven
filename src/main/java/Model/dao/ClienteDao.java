@@ -39,8 +39,8 @@ public class ClienteDao {
                 cliente.setNome(set.getString("nome"));
                 cliente.setCpf(set.getString("cpf"));
                 cliente.setEmail(set.getString("email"));
-                cliente.setIdTelefone(set.getInt("idTelefone"));
-                cliente.setIdEndereco(set.getInt("idEndereco"));
+                cliente.setIdTelefone(set.getInt("Telefone"));
+                cliente.setIdEndereco(set.getInt("Endereco"));
 
                 clientes.add(cliente);
             }
@@ -58,7 +58,7 @@ public class ClienteDao {
 
     public boolean salvarCliente(Cliente cliente) {
         boolean isSalvo = false;
-        String queryCliente = "insert into cliente (nome, cpf, email, idTelefone, idEndereco)"
+        String queryCliente = "insert into cliente (nome, cpf, email, Telefone, Endereco)"
                 + "values(?,?,?,?,?);";
 
         try {
@@ -67,8 +67,8 @@ public class ClienteDao {
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(3, cliente.getCpf());
             preparedStatement.setString(2, cliente.getEmail());
-            preparedStatement.setInt(4, cliente.getIdTelefone());
-            preparedStatement.setInt(5, cliente.getIdTelefone());
+            preparedStatement.setInt(4, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(5, (int) cliente.getIdTelefone());
 
 
             preparedStatement.execute();
@@ -95,8 +95,8 @@ public class ClienteDao {
                 + "SET = nome = ?,"
                 + "cpf = ?, "
                 + "email = ?, "
-                + "idTelefone = ?, "
-                + "idEndereco = ? "
+                + "Telefone = ?, "
+                + "Endereco = ? "
                 + "Where id = ?;";
         try {
             con.setAutoCommit(false);
@@ -163,7 +163,7 @@ public class ClienteDao {
 
     public boolean deletarCliente(int id) {
         boolean isSalvo = false;
-        String query = "delete from endereco where id = ?";
+        String query = "delete from cliente where id = ?";
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);

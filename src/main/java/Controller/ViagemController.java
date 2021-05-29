@@ -25,7 +25,10 @@ public class ViagemController {
         viagem.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe a hora da saida:");
-        viagem.setHoraPartida(leia.next());
+        viagem.setHoraPartida(leia.nextLine());
+
+        System.out.println("Informe a hora da chegada:");
+        viagem.setHoraChegada(leia.nextLine());
 
         System.out.println("Informe o ano de saida:");
         int saidaAno = leia.nextInt();
@@ -36,9 +39,6 @@ public class ViagemController {
 
         viagem.setDataSaida(LocalDate.of(saidaAno, saidaMes, saidaDia));
 
-        System.out.println("Informe a hora da chegada:");
-        viagem.setHoraChegada(leia.next());
-
         System.out.println("Informe o ano de chegada:");
         int chegadaAno = leia.nextInt();
         System.out.println("Informe o mês de chegada:");
@@ -46,20 +46,20 @@ public class ViagemController {
         System.out.println("Informe o dia de chegada:");
         int chegadaDia = leia.nextInt();
 
-
         viagem.setDataChegada(LocalDate.of(saidaAno, saidaMes, saidaDia));
 
         System.out.println("Informe o ID da Carga:");
-        int idCarga = leia.nextInt();
+        viagem.setIdCarga(leia.nextInt());
 
         System.out.println("Informe o ID do Veiculo:");
-        int idVeiculo = leia.nextInt();
+        viagem.setIdVeiculo(leia.nextInt());
 
         System.out.println("Informe o ID do Motorista:");
-        int idMotorista = leia.nextInt();
+        viagem.setIdMotorista(leia.nextInt());
 
         System.out.println("Informe o ID da Rota:");
-        int idRota = leia.nextInt();
+        viagem.setIdRota(leia.nextInt());
+
 
         viagens.add(viagem);
         
@@ -149,7 +149,19 @@ public class ViagemController {
 //        }
 //    }
     public void printarViagem (Viagem viagem) {
-        System.out.println(viagem.toString());
+
+        System.out.println();
+        System.out.println("A Hora da Partida foi:" + viagem.getHoraPartida());
+        System.out.println("A Hora da Chegada foi:" + viagem.getHoraChegada());
+        System.out.println("A Data da Saida foi:" + viagem.getDataSaida());
+        System.out.println("A Data da Saida foi:" + viagem.getDataChegada());
+        System.out.println("O ID da Carga é:" + viagem.getIdCarga());
+        System.out.println("O ID da Veiculo é:" + viagem.getIdVeiculo());
+        System.out.println("O ID da Motorista é:" + viagem.getIdMotorista());
+        System.out.println("O ID da Rota é:" + viagem.getIdRota());
+        System.out.println("O ID da Frete é:" + viagem.getFrete());
+        System.out.println();
+
 
     }
 
@@ -164,7 +176,7 @@ public class ViagemController {
         Viagem viagem = preencher();
         viagemDao = new ViagemDao();
         boolean isSalvo = viagemDao.salvarViagem(viagem);
-        return isSalvo = false;
+        return isSalvo;
     }
 
     public boolean editarViagems() {
@@ -195,7 +207,7 @@ public class ViagemController {
     }
     public int digitarId() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Qual o id: ");
+        System.out.println("Qual o ID da Viagem que deseja modificar: ");
         int id = input.nextInt();
         return id;
     }

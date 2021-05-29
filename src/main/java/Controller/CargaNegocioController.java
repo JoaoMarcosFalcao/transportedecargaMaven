@@ -168,6 +168,12 @@ public int digitarId() {
         int id = input.nextInt();
         return id;
         }
+
+    public boolean editarCargas(Carga carga) {
+        cargaDao = new CargaDao();
+        boolean isSalvo = false;
+        return isSalvo;
+    }
 }
 
 

@@ -5,7 +5,7 @@ use db_transporte;
 create table endereco (
  id int(11) not null auto_increment primary key,
  rua varchar(20) not null,
- numero varchar(4) not null,
+ numero varchar(4) not null unique,
  bairro varchar (20) not null,
  cidade varchar (20) not null,
  estado varchar (20) not null);
@@ -36,7 +36,7 @@ VALUES("+55","66","98877-1122");
 create table cliente (
 	id int(11) not null auto_increment primary key,
     nome varchar(200) not null,
-    cpf varchar(14) not null unique,
+    cpf varchar(50) not null unique,
     email varchar(200) not null,
     idTelefone int,
     idEndereco int,
@@ -44,8 +44,8 @@ create table cliente (
     constraint foreign key(idTelefone) references telefone(id));
     
     INSERT INTO `db_transporte`.`cliente`
-(`nome`, `cpf`, `email`, `telefone`, `endereco`)
-VALUES("Cliente Teste","111.111.111-82","clienteteste@hotmail.com","1","1");
+(nome, cpf, email, telefone, endereco)
+VALUES("Cliente Teste","123456789","clienteteste@hotmail.com",1,1);
 
 
 create table motorista (
@@ -60,8 +60,8 @@ create table motorista (
  validadeChn date not null);
   
      INSERT INTO `db_transporte`.`motorista`
-(`nome`, `email`, `telefone`, `endereco`, `cnh`, `validadeChn`)
-VALUES("Motorista Teste","askdajdsh@hotmail.com","2","2","254278181471","2025-07-07");
+(nome, email, IdTelefone, IdEndereco, cnh, validadeChn)
+VALUES("Motorista Teste","askdajdsh@hotmail.com",2,2,"254278181471","2025-03-07");
 
 create table veiculo (
 id int(11) not null auto_increment primary key,
@@ -101,26 +101,23 @@ cidadesParadas varchar(200) not null);
 VALUES("Barra do Garcas","Vila Rica","700","1,5","Agua Boa, Nova Xavantina");
 
 create table viagem (
-
 id int(11) not null auto_increment primary key,
-horaPartida float (20),
-horaChegada float (20),
+horaPartida varchar (200) null,
+horaChegada varchar (200) null,
 dataSaida date not null,
 dataChegada date not null,
-idCarga int,
-idVeiculo int,
-idMotorista int,
-idRota int,
+IdCarga int,
+IdVeiculo int,
+IdMotorista int,
+IdRota int,
 frete float (25),
 constraint foreign key(idCarga) references carga(id),
 constraint foreign key(idVeiculo) references veiculo(id),
 constraint foreign key(idMotorista) references motorista(id),
 constraint foreign key(idRota) references rota(id));
 
-     INSERT INTO `db_transporte`.`viagem`
-(`horaPartida`, `horaChegada`, `dataSaida`, `dataChegada`, `carga`, `veiculo`, `motorista`, `rota`, `frete`)
-VALUES("08:00","21:00","2021-05-01","2021-05-02","1","1", "1", "1", "300" );
-
-
+     INSERT INTO db_transporte.viagem
+(horaPartida, horaChegada, dataSaida, dataChegada, Idcarga, Idveiculo, Idmotorista, Idrota, frete)
+VALUES("8","205","2021-07-20","2021-07-29", 1, 1 , 1, 1,"950");
 
 

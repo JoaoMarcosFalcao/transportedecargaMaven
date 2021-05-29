@@ -88,8 +88,8 @@ public class ClienteController {
         System.out.println("O Nome do Cliente é: " + cliente.getNome());
         System.out.println("O Email do Cliente é: " + cliente.getEmail());
         System.out.println("O CPF do Cliente é: " + cliente.getCpf());
-        System.out.println("O Telefone do Cliente é: " + cliente.getIdTelefone());
-        System.out.println("O Enderenço do Clietne é: " + cliente.getIdEndereco());
+        System.out.println("O ID do Telefone do Cliente é: " + cliente.getIdTelefone());
+        System.out.println("O Id do Enderenço do Clietne é: " + cliente.getIdEndereco());
 
         System.out.println();
     }
@@ -101,8 +101,8 @@ public class ClienteController {
     }
 
     public boolean salvarCliente() {
-        Cliente cliente = preencher();
         clienteDao = new ClienteDao();
+        Cliente cliente = preencher();
         boolean isSalvo = clienteDao.salvarCliente(cliente);
         return isSalvo;
     }

@@ -32,10 +32,10 @@ public class RotaDao {
             while (set.next()) {
                 Rota rota = new Rota();
                 rota.setId(set.getInt("id"));
-                rota.setCidadeSaida(set.getString("Cidade de Saida"));
-                rota.setCidadeChegada(set.getString("Cidade Final"));
-                rota.setDistancia(set.getDouble("Distancia entre as cidades"));
-                rota.setCidadeParadas(set.getString("Cidades Paradas"));
+                rota.setCidadeSaida(set.getString("CidadeSaida"));
+                rota.setCidadeChegada(set.getString("CidadeChegada"));
+                rota.setDistancia(set.getDouble("Distancia"));
+                rota.setCidadeParadas(set.getString("CidadesParadas"));
 
                 rotas.add(rota);
             }
@@ -128,10 +128,10 @@ public class RotaDao {
             while (set.next()) {
                 Rota rota = new Rota();
                 rota.setId(set.getInt("id"));
-                rota.setCidadeSaida(set.getString("Cidade de Saida"));
-                rota.setCidadeChegada(set.getString("Cidade Final"));
-                rota.setDistancia(set.getDouble("Distancia entre as cidades"));
-                rota.setCidadeParadas(set.getString("Cidades Paradas"));
+                rota.setCidadeSaida(set.getString("CidadeSaida"));
+                rota.setCidadeChegada(set.getString("CidadeChegada"));
+                rota.setDistancia(set.getDouble("Distancia"));
+                rota.setCidadeParadas(set.getString("CidadesParadas"));
 
                 rotas.add(rota);
 
