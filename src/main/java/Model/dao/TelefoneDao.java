@@ -255,7 +255,6 @@ public class TelefoneDao {
             preparedStatement.setString(1, telefone.getCodigoArea());
             preparedStatement.setString(2, telefone.getDDD());
             preparedStatement.setString(3, telefone.getNumero());
-            preparedStatement.setInt(4, (int) telefone.getIdMotorista());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -290,7 +289,6 @@ public class TelefoneDao {
                 telefone.setCodigoArea(set.getString("codigoArea"));
                 telefone.setDDD(set.getString("DDD"));
                 telefone.setNumero(set.getString("Numero do Telefone"));
-                telefone.setIdMotorista(set.getInt("idMotorista"));
 
                 telefones.add(telefone);
 

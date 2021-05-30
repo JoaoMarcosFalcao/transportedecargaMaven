@@ -39,8 +39,8 @@ public class ClienteDao {
                 cliente.setNome(set.getString("nome"));
                 cliente.setCpf(set.getString("cpf"));
                 cliente.setEmail(set.getString("email"));
-                cliente.setIdTelefone(set.getInt("Telefone"));
-                cliente.setIdEndereco(set.getInt("Endereco"));
+                cliente.setIdTelefone(set.getInt("IdTelefone"));
+                cliente.setIdEndereco(set.getInt("IdEndereco"));
 
                 clientes.add(cliente);
             }
@@ -58,7 +58,7 @@ public class ClienteDao {
 
     public boolean salvarCliente(Cliente cliente) {
         boolean isSalvo = false;
-        String queryCliente = "insert into cliente (nome, cpf, email, Telefone, Endereco)"
+        String queryCliente = "insert into cliente (nome, cpf, email, idTelefone, idEndereco)"
                 + "values(?,?,?,?,?);";
 
         try {
@@ -68,7 +68,7 @@ public class ClienteDao {
             preparedStatement.setString(3, cliente.getCpf());
             preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setInt(4, (int) cliente.getIdTelefone());
-            preparedStatement.setInt(5, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(5, (int) cliente.getIdEndereco());
 
 
             preparedStatement.execute();
@@ -95,8 +95,8 @@ public class ClienteDao {
                 + "SET = nome = ?,"
                 + "cpf = ?, "
                 + "email = ?, "
-                + "Telefone = ?, "
-                + "Endereco = ? "
+                + "IdTelefone = ?, "
+                + "IdEndereco = ? "
                 + "Where id = ?;";
         try {
             con.setAutoCommit(false);
@@ -105,7 +105,7 @@ public class ClienteDao {
             preparedStatement.setString(3, cliente.getCpf());
             preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setInt(4, (int) cliente.getIdTelefone());
-            preparedStatement.setInt(5, (int) cliente.getIdTelefone());
+            preparedStatement.setInt(5, (int) cliente.getIdEndereco());
             preparedStatement.setInt(6,(int) cliente.getId());
 
             preparedStatement.executeUpdate();
@@ -141,8 +141,8 @@ public class ClienteDao {
                 cliente.setNome(set.getString("nome"));
                 cliente.setEmail(set.getString("email"));
                 cliente.setCpf(set.getString("cpf"));
-                cliente.setIdTelefone(set.getInt("ID Telefone"));
-                cliente.setIdEndereco(set.getInt("ID Endereco"));
+                cliente.setIdTelefone(set.getInt("IdTelefone"));
+                cliente.setIdEndereco(set.getInt("IdEndereco"));
 
                 clientes.add(cliente);
 

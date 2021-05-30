@@ -48,7 +48,7 @@ public class MotoristaController {
         System.out.println("Informe o Dia da Validade da CNH:");
         int diaValidade = leia.nextInt();
 
-        motorista.setValidadeCHN(LocalDate.of(diaValidade, mesValidade, anoValidade));
+        motorista.setValidadeCHN(LocalDate.of(anoValidade, mesValidade, diaValidade));
 
         motoristas.add(motorista);
 
@@ -109,7 +109,7 @@ public class MotoristaController {
 
     public void printarMotorista(Motorista motorista) {
 
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd.mm.yyyy");
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         System.out.println();
         System.out.println("O Nome do motorista é:" + motorista.getNome());

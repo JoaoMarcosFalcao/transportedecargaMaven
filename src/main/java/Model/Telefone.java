@@ -6,8 +6,8 @@ public class Telefone {
     private String codigoArea;
     private String DDD;
     private String numero;
-    private int idCliente;
-    private int idMotorista;
+//    private int idCliente;
+//    private int idMotorista;
 
     public Telefone() {
     }
@@ -44,19 +44,19 @@ public class Telefone {
         this.numero = numero;
     }
 
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdMotorista() {
-        return idMotorista;
-    }
-
-    public void setIdMotorista(int idMotorista) {
-        this.idMotorista = idMotorista;
-    }
+//    public int getIdCliente() {
+//        return idCliente;
+//    }
+//
+//    public void setIdCliente(int idCliente) {
+//        this.idCliente = idCliente;
+//    }
+//
+//    public int getIdMotorista() {
+//        return idMotorista;
+//    }
+//
+//    public void setIdMotorista(int idMotorista) {
+//        this.idMotorista = idMotorista;
+//    }
 }
