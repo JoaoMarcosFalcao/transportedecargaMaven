@@ -25,10 +25,10 @@ public class ViagemController {
         viagem.setId(id_generator.getAndIncrement());
 
         System.out.println("Informe a hora da saida:");
-        viagem.setHoraPartida(leia.nextLine());
+        viagem.setHoraPartida(leia.nextInt());
 
-        System.out.println("Informe a hora da chegada:");
-        viagem.setHoraChegada(leia.nextLine());
+        System.out.println("Informe os minutos da saida:");
+        viagem.setMinutoPartida(leia.nextInt());
 
         System.out.println("Informe o ano de saida:");
         int saidaAno = leia.nextInt();
@@ -38,6 +38,12 @@ public class ViagemController {
         int saidaDia = leia.nextInt();
 
         viagem.setDataSaida(LocalDate.of(saidaAno, saidaMes, saidaDia));
+
+        System.out.println("Informe a hora da chegada:");
+        viagem.setHoraChegada(leia.nextInt());
+
+        System.out.println("Informe os minutos da chegada:");
+        viagem.setMinutoChegada(leia.nextInt());
 
         System.out.println("Informe o ano de chegada:");
         int chegadaAno = leia.nextInt();
@@ -151,15 +157,15 @@ public class ViagemController {
     public void printarViagem (Viagem viagem) {
 
         System.out.println();
-        System.out.println("A Hora da Partida foi:" + viagem.getHoraPartida());
-        System.out.println("A Hora da Chegada foi:" + viagem.getHoraChegada());
-        System.out.println("A Data da Saida foi:" + viagem.getDataSaida());
-        System.out.println("A Data da Saida foi:" + viagem.getDataChegada());
-        System.out.println("O ID da Carga é:" + viagem.getIdCarga());
-        System.out.println("O ID da Veiculo é:" + viagem.getIdVeiculo());
-        System.out.println("O ID da Motorista é:" + viagem.getIdMotorista());
-        System.out.println("O ID da Rota é:" + viagem.getIdRota());
-        System.out.println("O ID da Frete é:" + viagem.getFrete());
+        System.out.println("A Hora da Partida foi: " + viagem.getHoraPartida() + " Horas e " + viagem.getMinutoPartida() + " minutos");
+        System.out.println("A Hora da Chegada foi: " + viagem.getHoraChegada() + " Horas e " + viagem.getMinutoChegada() + " minutos");
+        System.out.println("A Data da Saida foi: " + viagem.getDataSaida());
+        System.out.println("A Data da Saida foi: " + viagem.getDataChegada());
+        System.out.println("O ID da Carga é: " + viagem.getIdCarga());
+        System.out.println("O ID da Veiculo é: " + viagem.getIdVeiculo());
+        System.out.println("O ID da Motorista é: " + viagem.getIdMotorista());
+        System.out.println("O ID da Rota é: " + viagem.getIdRota());
+        System.out.println("O ID da Frete é: " + viagem.getFrete());
         System.out.println();
 
 

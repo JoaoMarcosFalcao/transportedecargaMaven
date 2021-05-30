@@ -9,7 +9,7 @@ public class Rota {
     private String cidadeChegada;
     private double distancia;
     private String cidadeParadas;
-    private ArrayList<String> cidadesRotas;
+    //private ArrayList<String> cidadesRotas;
 
     public Rota() {
     }
@@ -54,11 +54,11 @@ public class Rota {
         this.cidadeParadas = cidadeParadas;
     }
 
-    public ArrayList<String> getCidadesRotas() {
-        return cidadesRotas;
+//    public ArrayList<String> getCidadesRotas() {
+//        return cidadesRotas;
+//    }
+//
+//    public void setCidadesRotas(ArrayList<String> cidadesRotas) {
+//        this.cidadesRotas = cidadesRotas;
     }
 
-    public void setCidadesRotas(ArrayList<String> cidadesRotas) {
-        this.cidadesRotas = cidadesRotas;
-    }
-}

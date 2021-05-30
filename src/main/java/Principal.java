@@ -237,7 +237,7 @@ public class Principal {
                        viagemController.calcularFretePeso(viagemController.procurarPorId(idViagem), cargaNegocioController.procurarPorId(idCarga),rotaNegocioController.procurarPorId(idRota), veiculoController.procurarPorId(idVeiculo));
 
                     }
-                    System.out.println("Deseja encerrar o Sistema? 1-Sim, 2-Nao");
+                    System.out.println("Deseja encerrar o Sistema? 1 - Sim, 2 - Não");
                     pararPrograma = leia.nextInt();
 
                     if (pararPrograma == 1) {

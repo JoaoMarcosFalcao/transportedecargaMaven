@@ -26,22 +26,23 @@ public class RotaNegocioController {
         System.out.println("Informe a Cidade de Chegada:");
         rota.setCidadeChegada(leia.nextLine());
 
-        System.out.println("Informe o a Distancia");
+        System.out.println("Informe o a Distancia:");
         rota.setDistancia(leia.nextDouble());
 
-        String cp = "s";
-        while (cp == "s") {
-            System.out.println("Qual cidades a rota vai passar");
-            rota.setCidadeParadas(leia.nextLine());
+//        String cp = "s";
+//        while (cp == "s") {
 
-            System.out.println("Quer cadastar uma nova cidade! Digite S para continuar");
-            cp = leia.next();
+        System.out.println("Por quais cidades a rota vai passar?");
+        rota.setCidadeParadas(leia.nextLine());
 
-
-            rota.setCidadeParadas(cp);
+//            System.out.println("Quer cadastar uma nova cidade! Digite s para continuar");
+//            cp = leia.nextLine();
+//
+//
+//          rota.setCidadeParadas(cp);
 
             rotas.add(rota);
-        }
+
         return rota;
 
 //    }

@@ -6,8 +6,10 @@ public class Viagem {
 
 
     private long id;
-    private String horaPartida;
-    private String horaChegada;
+    private int horaPartida;
+    private int horaChegada;
+    private int minutoPartida;
+    private int minutoChegada;
     private LocalDate dataSaida;
     private LocalDate dataChegada;
     private int idCarga;
@@ -24,19 +26,19 @@ public class Viagem {
         this.id = id;
     }
 
-    public String getHoraPartida() {
+    public int getHoraPartida() {
         return horaPartida;
     }
 
-    public void setHoraPartida(String horaPartida) {
+    public void setHoraPartida(int horaPartida) {
         this.horaPartida = horaPartida;
     }
 
-    public String getHoraChegada() {
+    public int getHoraChegada() {
         return horaChegada;
     }
 
-    public void setHoraChegada(String horaChegada) {
+    public void setHoraChegada(int horaChegada) {
         this.horaChegada = horaChegada;
     }
 
@@ -94,6 +96,22 @@ public class Viagem {
 
     public void setFrete(double frete) {
         this.frete = frete;
+    }
+
+    public int getMinutoPartida() {
+        return minutoPartida;
+    }
+
+    public void setMinutoPartida(int minutoPartida) {
+        this.minutoPartida = minutoPartida;
+    }
+
+    public int getMinutoChegada() {
+        return minutoChegada;
+    }
+
+    public void setMinutoChegada(int minutoChegada) {
+        this.minutoChegada = minutoChegada;
     }
 
     public Viagem() {

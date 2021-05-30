@@ -34,8 +34,10 @@ public class ViagemDao {
             while (set.next()) {
                 Viagem viagem = new Viagem();
                 viagem.setId(set.getInt("id"));
-                viagem.setHoraPartida(set.getString("HoraPartida"));
-                viagem.setHoraChegada(set.getString("HoraChegada"));
+                viagem.setHoraPartida(set.getInt("HoraPartida"));
+                viagem.setHoraChegada(set.getInt("HoraChegada"));
+                viagem.setMinutoPartida(set.getInt("MinutoPartida"));
+                viagem.setMinutoChegada(set.getInt("MinutoPartida"));
                 viagem.setDataSaida(convertToLocalDateViaSqlDate(set.getDate("DataSaida")));
                 viagem.setDataChegada(convertToLocalDateViaSqlDate(set.getDate("DataChegada")));
                 viagem.setIdCarga(set.getInt("IdCarga"));
@@ -60,21 +62,23 @@ public class ViagemDao {
 
     public boolean salvarViagem(Viagem viagem) {
         boolean isSalvo = false;
-        String queryViagem = "insert into viagem (horaPartida, horaChegada, dataSaida, dataChegada, carga, veiculo, motorista, rota, frete)"
-                + "values(?,?,?,?,?,?,?,?,?);";
+        String queryViagem = "insert into viagem (horaPartida, horaChegada,minutoPartida, minutoChegada dataSaida, dataChegada, carga, veiculo, motorista, rota, frete)"
+                + "values(?,?,?,?,?,?,?,?,?,?,?);";
 
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(queryViagem);
-            preparedStatement.setString(1, viagem.getHoraPartida());
-            preparedStatement.setString(2, viagem.getHoraChegada());
-            preparedStatement.setDate(3, java.sql.Date.valueOf(viagem.getDataSaida()));
-            preparedStatement.setDate(4, java.sql.Date.valueOf(viagem.getDataChegada()));
-            preparedStatement.setInt(5,(int) viagem.getIdCarga());
-            preparedStatement.setInt(6,(int) viagem.getIdVeiculo());
-            preparedStatement.setInt(7,(int) viagem.getIdMotorista());
-            preparedStatement.setInt(8,(int) viagem.getIdRota());
-            preparedStatement.setDouble(9, viagem.getFrete());
+            preparedStatement.setInt(1, (int) viagem.getHoraPartida());
+            preparedStatement.setInt(2, (int) viagem.getHoraChegada());
+            preparedStatement.setInt(3,(int) viagem.getMinutoPartida());
+            preparedStatement.setInt(4,(int) viagem.getMinutoChegada());
+            preparedStatement.setDate(5, java.sql.Date.valueOf(viagem.getDataSaida()));
+            preparedStatement.setDate(6, java.sql.Date.valueOf(viagem.getDataChegada()));
+            preparedStatement.setInt(7,(int) viagem.getIdCarga());
+            preparedStatement.setInt(8,(int) viagem.getIdVeiculo());
+            preparedStatement.setInt(9,(int) viagem.getIdMotorista());
+            preparedStatement.setInt(10,(int) viagem.getIdRota());
+            preparedStatement.setDouble(11, viagem.getFrete());
 
             preparedStatement.execute();
 
@@ -99,6 +103,8 @@ public class ViagemDao {
         String query = "UPDATE db_transporte.viagem "
                 + "SET = horaPartida = ?,"
                 + "horaChegada = ?, "
+                + "minutoPartida = ?, "
+                + "minutoChegada = ?, "
                 + "dataSaida = ?, "
                 + "dataChegada = ?, "
                 + "carga = ?, "
@@ -110,15 +116,17 @@ public class ViagemDao {
         try {
             con.setAutoCommit(false);
             preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1, viagem.getHoraPartida());
-            preparedStatement.setString(2, viagem.getHoraChegada());
-            preparedStatement.setDate(3, java.sql.Date.valueOf(viagem.getDataSaida()));
-            preparedStatement.setDate(4, java.sql.Date.valueOf(viagem.getDataChegada()));
-            preparedStatement.setInt(5,(int) viagem.getIdCarga());
-            preparedStatement.setInt(6,(int) viagem.getIdVeiculo());
-            preparedStatement.setInt(7,(int) viagem.getIdMotorista());
-            preparedStatement.setInt(8,(int) viagem.getIdRota());
-            preparedStatement.setDouble(9, viagem.getFrete());
+            preparedStatement.setInt(1, (int) viagem.getHoraPartida());
+            preparedStatement.setInt(2, (int) viagem.getHoraChegada());
+            preparedStatement.setInt(3,(int) viagem.getMinutoPartida());
+            preparedStatement.setInt(4,(int) viagem.getMinutoChegada());
+            preparedStatement.setDate(5, java.sql.Date.valueOf(viagem.getDataSaida()));
+            preparedStatement.setDate(6, java.sql.Date.valueOf(viagem.getDataChegada()));
+            preparedStatement.setInt(7,(int) viagem.getIdCarga());
+            preparedStatement.setInt(8,(int) viagem.getIdVeiculo());
+            preparedStatement.setInt(9,(int) viagem.getIdMotorista());
+            preparedStatement.setInt(10,(int) viagem.getIdRota());
+            preparedStatement.setDouble(11, viagem.getFrete());
 
             preparedStatement.executeUpdate();
             con.commit();
@@ -150,8 +158,10 @@ public class ViagemDao {
             while (set.next()) {
                 Viagem viagem = new Viagem();
                 viagem.setId(set.getInt("id"));
-                viagem.setHoraPartida(set.getString("horaPartida"));
-                viagem.setHoraChegada(set.getString("horaChegada"));
+                viagem.setHoraPartida(set.getInt("HoraPartida"));
+                viagem.setHoraChegada(set.getInt("HoraChegada"));
+                viagem.setMinutoPartida(set.getInt("MinutoPartida"));
+                viagem.setMinutoChegada(set.getInt("MinutoPartida"));
                 viagem.setDataSaida(convertToLocalDateViaSqlDate(set.getDate("dataSaida")));
                 viagem.setDataChegada(convertToLocalDateViaSqlDate(set.getDate("dataChegada")));
                 viagem.setIdCarga(set.getInt("Idarga"));
